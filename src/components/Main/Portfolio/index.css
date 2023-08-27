@@ -1,0 +1,48 @@
+.portfolio {
+    background-color: #202020;
+}
+
+.portfolio__title {
+    color: #A0A0A0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.portfolio__links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.portfolio__links-list-item {
+    padding-top: 20px;
+    padding-bottom: 19px;
+    border-bottom: 1px #E6E6E6 solid;
+}
+
+.portfolio__links-list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.portfolio__link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio__link-text {
+    margin: 0;
+}
+
+.portfolio__link-logo {
+    background-image: url(../../../images/portfolio-link-logo.svg);
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 28px;
+}
