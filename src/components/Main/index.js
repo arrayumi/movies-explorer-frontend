@@ -4,16 +4,21 @@ import AboutProject from './AboutProject';
 import Portfolio from './Portfolio';
 import Techs from './Techs';
 import AboutMe from './AboutMe';
+import Footer from '../common/Footer';
 
 export default function Main() {
     return (
         <>
-            <Promo />
-            <NavTab />
-            <AboutProject />
-            <Techs />
-            <AboutMe />
-            <Portfolio />
+            <main>
+                <Promo />
+                <NavTab />
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+            </main>
+            
+            <Footer />
         </>
     )
 }
