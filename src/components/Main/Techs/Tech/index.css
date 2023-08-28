@@ -1,0 +1,13 @@
+.techs__item {
+    background-color: #303030;
+    border-radius: 10px;
+    min-height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+}

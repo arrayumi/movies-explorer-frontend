@@ -1,16 +1,5 @@
-.about-project {
-    background-color: #202020;
-}
-
 .about-project__title {
-    margin: 0;
-    padding: 70px 0 28px;
     border-bottom: 1px #DADADA solid;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.72px;
 }
 
 .about-project__list {

@@ -1,0 +1,35 @@
+.techs__title {
+    border-bottom: 1px black solid;
+}
+
+.techs__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(84px, min-content));
+    gap: 10px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 50px 0 70px;
+    width: 95%;
+}
+
+.techs__subtitle {
+    margin: 0;
+    padding: 60px 0 24px;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+    text-align: center;
+}
+
+.techs__caption {
+    margin: 0;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+    text-align: center;
+}

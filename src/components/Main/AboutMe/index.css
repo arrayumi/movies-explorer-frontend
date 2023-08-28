@@ -1,0 +1,53 @@
+.about-me {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me__title {
+    border-bottom: 1px #DADADA solid;
+    margin-bottom: 60px;
+}
+
+.about-me__photo {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: auto;
+    aspect-ratio: 5/6;
+}
+
+.about-me__name {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.2px;
+    margin: 0;
+    padding: 40px 0 20px;
+}
+
+.about-me__caption {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    margin: 0;
+}
+
+.about-me__text {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 0;
+    padding: 20px 0 40px;
+}
+
+.about-me__link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
