@@ -1,0 +1,8 @@
+.movies-cardlist {
+    list-style: none;
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 26px;
+    display: grid;
+    gap: 14px;
+}

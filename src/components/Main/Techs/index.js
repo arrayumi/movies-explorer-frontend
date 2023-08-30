@@ -1,10 +1,10 @@
 import './index.css';
 import Article from '../Article';
 import Tech from './Tech';
-import techs from '../../../utils/constants';
+import { techs } from '../../../utils/constants';
 
 export default function Techs() {
-    const techsList = techs.map(tech => <Tech tech={tech} />)
+    const techsList = techs.map((tech, index) => <Tech tech={tech} key={index} />)
 
     return (
         <Article sectionClassName="techs" titleClassName="techs__title" title="Технологии" navLink="techs">
