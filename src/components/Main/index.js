@@ -1,3 +1,4 @@
+import './index.css';
 import Promo from './Promo';
 import NavTab from './NavTab';
 import AboutProject from './AboutProject';

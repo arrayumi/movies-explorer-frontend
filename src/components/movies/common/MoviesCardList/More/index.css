@@ -1,0 +1,27 @@
+.movies-cardlist__more {
+    padding-top: 50px;
+}
+
+.movies-cardlist__more_enabled {
+    padding-bottom: 80px;
+}
+
+.movies-cardlist__more_disabled {
+    padding-bottom: 90px;
+}
+
+.movies-cardlist__more-button {
+    border: none;
+    cursor: pointer;
+    background-color: #2F2F2F;
+    border-radius: 6px;
+    color: white;
+    min-width: 300px;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 50px;
+}
