@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './index.css';
 import Main from '../Main';
 import Movies from '../movies/Movies';
+import SavedMovies from '../movies/SavedMovies';
 
 function App() {
     return (
@@ -12,8 +13,8 @@ function App() {
                 {/* <Route path="/sign-in" element={<Login />} />
                 <Route path="/sign-up" element={<Register />} /> */}
                 <Route path="/movies" element={<Movies />} />
-                {/* <Route path="/saved-movies" element={<SavedMovies />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/saved-movies" element={<SavedMovies />} />
+                {/* <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<Page404 />} /> */}
             </Routes>
         </div>
