@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './index.css';
 import Main from '../Main';
 import Movies from '../movies/Movies';
 import SavedMovies from '../movies/SavedMovies';
+import Profile from '../user/Profile';
 
 function App() {
     return (
@@ -14,8 +15,8 @@ function App() {
                 <Route path="/sign-up" element={<Register />} /> */}
                 <Route path="/movies" element={<Movies />} />
                 <Route path="/saved-movies" element={<SavedMovies />} />
-                {/* <Route path="/profile" element={<Profile />} />
-                <Route path="*" element={<Page404 />} /> */}
+                <Route path="/profile" element={<Profile />} />
+                {/* <Route path="*" element={<Page404 />} /> */}
             </Routes>
         </div>
     )

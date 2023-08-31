@@ -1,0 +1,32 @@
+import './index.css';
+import { NavLink } from 'react-router-dom';
+import Header from '../../common/Header';
+import ProfileInput from './ProfileInput';
+
+export default function Profile() {
+    return (
+        <>
+            <Header />
+            <main className="profile">
+                <h2 className="profile__title">Привет, Анна!</h2>
+
+                <form className="profile__form">
+                    <ProfileInput title="Имя" placeholder="Анна" />
+                    <ProfileInput title="E-mail" placeholder="pochta@yandex.ru" />
+                </form>
+                <ul className="profile__links-list">
+                    <li>
+                        <button className="profile__link" type="button">
+                            Редактировать
+                        </button>
+                    </li>
+                    <li>
+                        <button className="profile__link profile__link_type_logout" type="button">
+                            Выйти из аккаунта
+                        </button>
+                    </li>
+                </ul>
+            </main>
+        </>
+    )
+}
