@@ -6,9 +6,9 @@ import ProfileInput from './ProfileInput';
 export default function Profile() {
     return (
         <>
-            <Header />
+            <Header isAuthorized={true}/>
             <main className="profile">
-                <h2 className="profile__title">Привет, Анна!</h2>
+                <h1 className="profile__title">Привет, Анна!</h1>
 
                 <form className="profile__form">
                     <ProfileInput title="Имя" placeholder="Анна" />

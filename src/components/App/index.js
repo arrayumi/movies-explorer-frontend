@@ -5,6 +5,7 @@ import Main from '../Main';
 import Movies from '../movies/Movies';
 import SavedMovies from '../movies/SavedMovies';
 import Profile from '../user/Profile';
+import Page404 from '../Page404';
 
 function App() {
     return (
@@ -16,7 +17,7 @@ function App() {
                 <Route path="/movies" element={<Movies />} />
                 <Route path="/saved-movies" element={<SavedMovies />} />
                 <Route path="/profile" element={<Profile />} />
-                {/* <Route path="*" element={<Page404 />} /> */}
+                <Route path="*" element={<Page404 />} />
             </Routes>
         </div>
     )
