@@ -1,0 +1,6 @@
+.auth {
+    height: 100vh;
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+}

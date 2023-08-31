@@ -1,0 +1,21 @@
+.auth__title-container {
+    display: flex;
+    flex-direction: column;
+    padding: 56px 0 80px;
+    align-items: center;
+    gap: 50px;
+}
+
+.auth__logo-link {
+    display: flex;
+}
+
+.auth__title-logo {
+    width: 38px;
+}
+
+.auth__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}

@@ -6,14 +6,16 @@ import Movies from '../movies/Movies';
 import SavedMovies from '../movies/SavedMovies';
 import Profile from '../user/Profile';
 import Page404 from '../Page404';
+import Login from '../user/Login';
+import Register from '../user/Register';
 
 function App() {
     return (
         <div className="page">
             <Routes>
                 <Route path="/" element={<Main />} />
-                {/* <Route path="/sign-in" element={<Login />} />
-                <Route path="/sign-up" element={<Register />} /> */}
+                <Route path="/sign-in" element={<Login />} />
+                <Route path="/sign-up" element={<Register />} />
                 <Route path="/movies" element={<Movies />} />
                 <Route path="/saved-movies" element={<SavedMovies />} />
                 <Route path="/profile" element={<Profile />} />

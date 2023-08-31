@@ -1,5 +1,4 @@
 import './index.css';
-import { NavLink } from 'react-router-dom';
 import Header from '../../common/Header';
 import ProfileInput from './ProfileInput';
 
