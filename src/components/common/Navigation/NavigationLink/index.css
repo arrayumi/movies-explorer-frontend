@@ -12,6 +12,21 @@
     line-height: 18px;
 }
 
+.navigation__link_type_auth {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.navigation__link_type_button {
+    background-color: #3DDC84;
+    border: none;
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 3px;
+    color: black;
+}
+
 .navigation__links-item_type_profile {
     margin-left: auto;
 }

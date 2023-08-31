@@ -13,6 +13,18 @@
     display: none;
 }
 
+.navigation__links-list_type_auth {
+    gap: 14px;
+    justify-content: flex-end;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation__links-list_type_auth {
+        gap: 30px;
+        display: flex;
+    }
+}
+
 @media screen and (min-width: 1280px) {
     .navigation__links-list {
         display: flex;
