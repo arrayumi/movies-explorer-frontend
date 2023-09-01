@@ -4,3 +4,15 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (min-width: 768px) {
+    .auth {
+        padding: 0 186px 232px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .auth {
+        padding: 0 422px 70px;
+    }
+}

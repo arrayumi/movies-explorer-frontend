@@ -20,3 +20,18 @@
     font-weight: 400;
     line-height: normal;
 }
+
+@media screen and (min-width: 768px) {
+    .auth__link-container {
+        margin-top: 16px;
+        gap: 6px;
+    }
+
+    .auth__link-span {
+        font-size: 14px;
+    }
+
+    .auth__link {
+        font-size: 14px;
+    }
+}
