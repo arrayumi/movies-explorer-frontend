@@ -8,7 +8,7 @@ export default function SavedMovies() {
     return (
         <>
             <Header isAuthorized={true} />
-            <main>
+            <main className="saved-movies">
                 <SearchForm />
                 <MoviesCardList />
             </main>

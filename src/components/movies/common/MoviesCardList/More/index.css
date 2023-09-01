@@ -23,5 +23,12 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    padding: 10px 50px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+    .movies-cardlist__more-button {
+        padding: 11px 0 9px;
+    }
 }

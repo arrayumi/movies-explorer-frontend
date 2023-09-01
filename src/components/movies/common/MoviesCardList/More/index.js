@@ -2,7 +2,7 @@ import './index.css';
 
 export default function More({ isMoreCards }) {
     return (
-        <div className={`movies-cardlist__more movies-element ${isMoreCards ?
+        <div className={`movies-cardlist__more ${isMoreCards ?
             'movies-cardlist__more_enabled' :
             'movies-cardlist__more_disabled'}`}>
             {isMoreCards ?

@@ -8,7 +8,7 @@ export default function MoviesCardList() {
         <MoviesCard movie={movie} isSaved={true} isSavedMovieCard={false} key={index} />)
     return (
         <>
-            <ul className="movies-element movies-cardlist">{moviesCardList}</ul>
+            <ul className="movies-cardlist">{moviesCardList}</ul>
             <More isMoreCards={true} />
         </>
     )

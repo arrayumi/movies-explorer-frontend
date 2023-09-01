@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px #424242 solid;
-    margin: 0 14px 10px;
+    margin-bottom: 10px;
 }
 
 .search-form__field {
@@ -44,4 +44,10 @@
     width: 80px;
     background-color: transparent;
     border: none;
+}
+
+@media screen and (min-width: 640px) {
+    .search-form__input {
+        font-size: 13px;
+    }
 }

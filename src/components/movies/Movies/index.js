@@ -8,7 +8,7 @@ export default function Movies() {
     return (
         <>
             <Header isAuthorized={true} />
-            <main>
+            <main className="movies" aria-label="Фильмы.">
                 <SearchForm />
                 <MoviesCardList />
             </main>

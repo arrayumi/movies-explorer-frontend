@@ -11,7 +11,6 @@ import Register from '../user/Register';
 import NavPopup from '../common/NavPopup';
 
 function App() {
-    const isAuthorized = true;
 
     return (
         <div className="page">
