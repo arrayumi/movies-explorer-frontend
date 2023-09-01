@@ -5,10 +5,15 @@ export default function NavigationLink({ link, title, isLinkToProfile, className
     const location = useLocation();
 
     return (
-        <li className={`navigation__links-item ${(isLinkToProfile && !isPopup) ? 'navigation__links-item_type_profile' : ''}
-        ${isPopup ? 'navigation__links-item_type_popup' : ''}`}>
+        <li className={`navigation__links-item 
+        ${(isLinkToProfile && !isPopup) ? 'navigation__links-item_type_profile' : ''}
+        ${isPopup ? 'navigation__links-item_type_popup' : ''}
+        `}>
 
-                <NavLink to={link} className={`navigation__link ${className ? className : ''}`}>
+                <NavLink to={link} className={`navigation__link 
+                ${className ? className : ''}
+                ${location.pathname === link ? 'navigation__link_active' : ''}
+                `}>
                     {title}
                 </NavLink>
 

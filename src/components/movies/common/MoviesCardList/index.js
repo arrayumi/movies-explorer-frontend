@@ -2,7 +2,7 @@ import './index.css';
 import { movies } from '../../../../utils/constants';
 import MoviesCard from '../MoviesCard';
 import More from './More';
-import Preloader from '../Preloader';
+import Preloader from '../../Movies/Preloader';
 
 export default function MoviesCardList() {
     const moviesCardList = movies.map((movie, index) =>

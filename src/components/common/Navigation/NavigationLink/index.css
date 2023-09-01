@@ -24,7 +24,7 @@
     padding-bottom: 7px;
 }
 
-.navigation__links-list_type_popup li:not(:last-child) a:hover {
+.navigation__links-list_type_popup li:not(:last-child) .navigation__link_active {
     border-bottom: 2px white solid;
 }
 
@@ -35,6 +35,10 @@
     padding: 8px 20px;
     border-radius: 3px;
     color: black;
+}
+
+.navigation__link_active {
+    font-weight: 500;
 }
 
 .navigation__links-item_type_profile {

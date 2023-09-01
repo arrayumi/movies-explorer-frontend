@@ -4,8 +4,43 @@
     margin-top: 42px;
 }
 
-.search-form__checkbox {
-    
+.search-form__default-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+}
+
+.search-form__custom-checkbox {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: 36px;
+    border-radius: 20px;
+    background-color: #EBEBEB;
+    cursor: pointer;
+}
+
+.search-form__default-checkbox:checked+.search-form__custom-checkbox {
+    background-color: #3DDC84;
+}
+
+.search-form__custom-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 16px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    transition: left 0.3s ease;
+}
+
+.search-form__default-checkbox:checked+.search-form__custom-checkbox::after {
+    left: 18px;
+    background-color: white;
 }
 
 .search-form__checkbox-title {

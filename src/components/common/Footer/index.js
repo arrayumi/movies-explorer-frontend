@@ -12,7 +12,7 @@ export default function Footer() {
                     <a href="https://github.com/arrayumi/" className="footer__link">Github</a>
                 </li>
             </ul>
-            <p className="footer__text footer__text_type_copyright">©{new Date().getFullYear()}</p>
+            <p className="footer__text footer__text_type_copyright">© {new Date().getFullYear()}</p>
         </footer>
     )
 }
