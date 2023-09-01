@@ -18,6 +18,16 @@
     line-height: 16px;
 }
 
+.navigation__links-list_type_popup li:not(:last-child) a {
+    font-size: 18px;
+    display: block;
+    padding-bottom: 7px;
+}
+
+.navigation__links-list_type_popup li:not(:last-child) a:hover {
+    border-bottom: 2px white solid;
+}
+
 .navigation__link_type_button {
     background-color: #3DDC84;
     border: none;
@@ -29,6 +39,11 @@
 
 .navigation__links-item_type_profile {
     margin-left: auto;
+}
+
+.navigation__links-item_type_popup {
+    position: fixed;
+    bottom: 46px;
 }
 
 .navigation__profile-logo {
@@ -44,4 +59,10 @@
 
 .navigation__profile-logo_type_main {
     background-color: #0F4157;
+}
+
+@media screen and (min-width: 600px) {
+    .navigation__links-list_type_popup li:not(:last-child) a {
+        padding-bottom: 4px;
+    }
 }

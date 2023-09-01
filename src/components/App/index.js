@@ -8,8 +8,11 @@ import Profile from '../user/Profile';
 import Page404 from '../Page404';
 import Login from '../user/Login';
 import Register from '../user/Register';
+import NavPopup from '../common/NavPopup';
 
 function App() {
+    const isAuthorized = true;
+
     return (
         <div className="page">
             <Routes>
@@ -21,6 +24,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<Page404 />} />
             </Routes>
+            <NavPopup />
         </div>
     )
 }
