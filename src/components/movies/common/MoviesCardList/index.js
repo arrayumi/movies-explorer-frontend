@@ -2,6 +2,7 @@ import './index.css';
 import { movies } from '../../../../utils/constants';
 import MoviesCard from '../MoviesCard';
 import More from './More';
+import Preloader from '../Preloader';
 
 export default function MoviesCardList() {
     const moviesCardList = movies.map((movie, index) =>
@@ -9,6 +10,7 @@ export default function MoviesCardList() {
     return (
         <>
             <ul className="movies-cardlist">{moviesCardList}</ul>
+            {!movies && <Preloader />}
             <More isMoreCards={true} />
         </>
     )

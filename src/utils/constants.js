@@ -13,4 +13,19 @@ export const movies = [{
     nameRU: "Молния",
     image: "https://images.unsplash.com/photo-1692603396512-3a2ab228a8c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80",
     duration: "1ч 53м"
+},
+{
+    nameRU: "Молния",
+    image: "https://images.unsplash.com/photo-1692603396512-3a2ab228a8c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80",
+    duration: "1ч 53м"
+},
+{
+    nameRU: "Молния",
+    image: "https://images.unsplash.com/photo-1692603396512-3a2ab228a8c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80",
+    duration: "1ч 53м"
+},
+{
+    nameRU: "Молния",
+    image: "https://images.unsplash.com/photo-1692603396512-3a2ab228a8c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80",
+    duration: "1ч 53м"
 }]
