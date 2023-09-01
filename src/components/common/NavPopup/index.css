@@ -56,9 +56,14 @@
         padding: 159px 90px 0;
         box-sizing: border-box;
     }
+
+    .nav-popup__close-button {
+        top: 22px;
+        right: 22px;
+    }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
     .nav-popup_active {
         opacity: 0;
         visibility: hidden;

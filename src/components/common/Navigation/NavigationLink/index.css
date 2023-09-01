@@ -65,4 +65,8 @@
     .navigation__links-list_type_popup li:not(:last-child) a {
         padding-bottom: 4px;
     }
+
+    .navigation__links-item_type_popup {
+        bottom: 90px;
+    }
 }
