@@ -6,7 +6,7 @@ export default function Login() {
         <Auth
             title="Рады видеть!"
             buttonTitle="Войти"
-            path="/sign-up"
+            path="/signup"
             link="Регистрация"
             linkSpan="Ещё не зарегистрированы?"
             formName="login-form">

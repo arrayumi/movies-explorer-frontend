@@ -6,7 +6,7 @@ import Navigation from '../Navigation';
 export default function Header({isAuthorized}) {
     const location = useLocation();
     return (
-        <header className={`header ${location.pathname === '/' && 'header_type_main'}`}>
+        <header className={`header ${location.pathname === '/' ? 'header_type_main' : ''}`}>
             <NavLink to="/" className="header__logo-link">
                 <img src={logo} className="header__logo" alt="Лого." />
             </NavLink>

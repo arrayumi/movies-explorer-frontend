@@ -2,6 +2,7 @@ import './index.css';
 import Header from '../../common/Header';
 import ProfileInput from './ProfileInput';
 import ProfileSaveButton from './ProfileSaveButton';
+import ProfileLink from './ProfileLink';
 
 export default function Profile() {
     const editMode = false;
@@ -21,14 +22,10 @@ export default function Profile() {
                     :
                     <ul className="profile__links-list">
                         <li>
-                            <button className="profile__link" type="button">
-                                Редактировать
-                            </button>
+                            <ProfileLink link="/profile" text="Редактировать" />
                         </li>
                         <li>
-                            <button className="profile__link profile__link_type_logout" type="button">
-                                Выйти из аккаунта
-                            </button>
+                            <ProfileLink link="/" text="Выйти из аккаунта" className="profile__link_type_logout" />
                         </li>
                     </ul>
                 }

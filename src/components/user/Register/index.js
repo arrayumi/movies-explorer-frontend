@@ -6,7 +6,7 @@ export default function Register() {
         <Auth
             title="Добро пожаловать!"
             buttonTitle="Зарегистрироваться"
-            path="/sign-in"
+            path="/signin"
             link="Войти"
             linkSpan="Уже зарегистрированы?">
             <AuthInput type="text" name="name" span="Имя" />

@@ -30,20 +30,6 @@
     gap: 16px;
 }
 
-.profile__link {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.profile__link_type_logout {
-    color: #EE3465;
-    font-weight: 500;
-}
-
 @media screen and (min-width: 768px) {
     .profile {
         padding: 0 179px;
@@ -53,9 +39,6 @@
     }
     .profile__links-list {
         margin-bottom: 269px;
-    }
-    .profile__link {
-        font-size: 13px;
     }
 }
 
