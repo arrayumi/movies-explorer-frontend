@@ -17,9 +17,7 @@
     margin: 0;
     padding: 60px 0 24px;
     font-size: 30px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     letter-spacing: -1.2px;
     text-align: center;
 }
@@ -27,9 +25,55 @@
 .techs__caption {
     margin: 0;
     font-size: 11px;
-    font-style: normal;
     font-weight: 400;
     line-height: 16px;
     letter-spacing: -0.44px;
     text-align: center;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .techs {
+        background-color: #272727;
+    }
+
+    .techs__list {
+        width: 100%;
+        padding: 83px 0 90px;
+    }
+
+    .techs__title {
+        border-bottom: 1px #DADADA solid;
+    }
+
+    .techs__subtitle {
+        padding: 80px 0 22px;
+        font-size: 50px;
+        line-height: 58px;
+        letter-spacing: -2px;
+    }
+
+    .techs__caption {
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.48px;
+        max-width: 460px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .techs__list {
+        padding: 100px 0;
+        grid-template-columns: repeat(auto-fit, minmax(90px, min-content));
+    }
+
+    .techs__subtitle {
+        padding: 90px 0 26px;
+    }
+
+    .techs__caption {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.56px;
+    }
 }
