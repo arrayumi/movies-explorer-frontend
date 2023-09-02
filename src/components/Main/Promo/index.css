@@ -19,3 +19,23 @@
     line-height: 39px;
     letter-spacing: -1.24px;
 }
+
+@media screen and (min-width: 768px) {
+    .promo {
+        background-size: 320px auto;
+        min-height: 784px;
+    }
+
+    .promo__title {
+        font-size: 50px;
+        line-height: 58px;
+        letter-spacing: -2px;
+        min-width: 116px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .promo__title {
+        max-width: 730px;
+    }
+}
