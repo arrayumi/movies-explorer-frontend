@@ -1,16 +1,16 @@
-.movies-cardlist__more {
+.movies__more {
     padding-top: 50px;
 }
 
-.movies-cardlist__more_enabled {
+.movies__more_enabled {
     padding-bottom: 80px;
 }
 
-.movies-cardlist__more_disabled {
+.movies__more_disabled {
     padding-bottom: 90px;
 }
 
-.movies-cardlist__more-button {
+.movies__more-button {
     border: none;
     cursor: pointer;
     background-color: #2F2F2F;
@@ -28,7 +28,7 @@
 }
 
 @media screen and (min-width: 640px) {
-    .movies-cardlist__more-button {
+    .movies__more-button {
         padding: 11px 0 9px;
     }
 }

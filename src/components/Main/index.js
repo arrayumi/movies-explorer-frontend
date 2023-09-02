@@ -11,7 +11,7 @@ import Footer from '../common/Footer';
 export default function Main() {
     return (
         <>
-            <Header isAuthorized={false} />
+            <Header isAuthorized={true} />
             <main>
                 <Promo />
                 <NavTab />

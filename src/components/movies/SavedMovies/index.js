@@ -1,18 +1,7 @@
-import './index.css';
-import Header from '../../common/Header';
-import Footer from "../../common/Footer";
-import SearchForm from '../Movies/SearchForm';
-import MoviesCardList from "../common/MoviesCardList";
+import MoviesPage from "../common/MoviesPage";
 
-export default function SavedMovies() {
+export default function Movies() {
     return (
-        <>
-            <Header isAuthorized={true} />
-            <main className="saved-movies">
-                <SearchForm />
-                <MoviesCardList />
-            </main>
-            <Footer />
-        </>
+        <MoviesPage />
     )
 }
