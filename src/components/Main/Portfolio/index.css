@@ -7,7 +7,6 @@
 .portfolio__title {
     color: #A0A0A0;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 20px;
     margin: 0;
@@ -40,6 +39,10 @@
 
 .portfolio__link-text {
     margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.72px;
 }
 
 .portfolio__link-logo {
@@ -47,4 +50,37 @@
     background-repeat: no-repeat;
     width: 18px;
     height: 28px;
+}
+
+@media screen and (min-width: 768px) {
+    .portfolio {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .portfolio__title {
+        font-size: 18px;
+    }
+
+    .portfolio__link-text {
+        font-size: 28px;
+        line-height: 50px;
+        letter-spacing: -1.12px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .portfolio {
+        padding-top: 100px;
+        padding-bottom: 125px;
+    }
+
+    .portfolio__title {
+        font-size: 18px;
+    }
+
+    .portfolio__link-text {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+    }
 }
