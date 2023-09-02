@@ -9,6 +9,7 @@
     padding: 60px 0 60px;
     margin: 0;
     gap: 56px;
+    justify-content: center;
 }
 
 .about-project__subtitle {
