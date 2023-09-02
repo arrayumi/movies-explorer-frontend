@@ -13,7 +13,7 @@ export default function AboutMe() {
                     <p className="about-me__text">Здесь будет рассказ о себе, который я еще не придумала</p>
                 </div>
                 <div className="about-me__link-container">
-                    <a href="3" className="about-me__link">Github</a>
+                    <a target="blank" href="https://github.com/arrayumi/" className="about-me__link">Github</a>
                 </div>
             </article>
         </Article>
