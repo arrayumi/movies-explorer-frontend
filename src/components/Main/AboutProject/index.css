@@ -51,6 +51,7 @@
     min-height: 35px;
     font-size: 11px;
     font-weight: 400;
+    margin: 0;
 }
 
 .about-project__timescale-block_color_green {
@@ -68,6 +69,7 @@
     padding-top: 10px;
     font-size: 11px;
     font-weight: 400;
+    margin: 0;
 }
 
 @media screen and (min-width: 768px) {

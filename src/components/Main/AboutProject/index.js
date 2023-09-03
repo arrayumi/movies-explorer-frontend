@@ -20,12 +20,12 @@ export default function AboutProject() {
 
                 <div className="about-project__timescale">
                     <div className="about-project__timescale-item">
-                        <div className="about-project__timescale-block about-project__timescale-block_color_green">1 неделя</div>
-                        <div className="about-project__timescale-caption">Back-end</div>
+                        <p className="about-project__timescale-block about-project__timescale-block_color_green">1 неделя</p>
+                        <p className="about-project__timescale-caption">Back-end</p>
                     </div>
                     <div className="about-project__timescale-item">
-                        <div className="about-project__timescale-block about-project__timescale-block_color_gray">4 недели</div>
-                        <div className="about-project__timescale-caption">Front-end</div>
+                        <p className="about-project__timescale-block about-project__timescale-block_color_gray">4 недели</p>
+                        <p className="about-project__timescale-caption">Front-end</p>
                     </div>
                 </div>
             </article>
