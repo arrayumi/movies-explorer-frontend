@@ -6,7 +6,7 @@ export default function ProfileSaveButton({ errorMessage }) {
             {errorMessage ?
                 <span class="profile__error-message">{errorMessage}</span> :
                 null}
-            <button className="profile__button">Сохранить</button>
+            <button type="submit" className="profile__button">Сохранить</button>
         </div>
     )
 }

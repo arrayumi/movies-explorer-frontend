@@ -20,10 +20,11 @@
     color: white;
     font-size: 13px;
     font-weight: 500;
+    outline: none;
 }
 
 .auth__input:focus {
-    outline: none;
+    border: 1px solid #4285F4;
 }
 
 .auth__input_type_error {

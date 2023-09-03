@@ -23,6 +23,7 @@
     height: 18px;
     padding: 14px 22px;
     width: calc(100% - (22px*2));
+    outline: none;
 }
 
 .search-form__input::placeholder {
@@ -30,7 +31,7 @@
 }
 
 .search-form__input:focus {
-    outline: none;
+    border: 1px solid #4285F4;
 }
 
 .search-form__button {

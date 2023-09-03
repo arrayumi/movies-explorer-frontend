@@ -20,6 +20,12 @@
     background-color: transparent;
     border: none;
     padding: 0;
+    outline: none;
+}
+
+.profile__input:focus {
+    border: 1px solid #4285F4;
+    border-radius: 5px;
 }
 
 .profile__input::placeholder {
