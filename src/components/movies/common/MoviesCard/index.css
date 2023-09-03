@@ -18,7 +18,7 @@
 
 .movies-card__name-container {
     display: flex;
-    padding: 14px 10px 14px 14px;
+    padding: 5px 10px 5px 14px;
     justify-content: space-between;
     align-items: center;
 }

@@ -1,5 +1,5 @@
 .search-form {
-    padding: 80px 0 50px;
+    padding: 75px 0 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,8 +48,14 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 768px) {
     .search-form__input {
         font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .search-form {
+        padding-top: 40px;
     }
 }

@@ -57,6 +57,7 @@
             'copyright links-list';
         padding-left: 30px;
         padding-right: 30px;
+        gap: 15px;
     }
 
     .footer__links-list {
