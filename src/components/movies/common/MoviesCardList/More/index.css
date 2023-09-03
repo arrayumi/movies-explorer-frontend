@@ -27,7 +27,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 768px) {
     .movies__more-button {
         padding: 11px 0 9px;
     }

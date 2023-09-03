@@ -50,7 +50,7 @@
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
     .page-404__link {
         padding-bottom: 60px;
     }
