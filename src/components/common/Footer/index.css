@@ -55,8 +55,8 @@
         grid-template-areas:
             'text text'
             'copyright links-list';
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     .footer__links-list {
