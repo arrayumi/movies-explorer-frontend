@@ -1,7 +1,9 @@
 import './index.css';
 import NavigationLink from './NavigationLink';
+import { useLocation } from 'react-router-dom';
 
-export default function Navigation({ isAuthorized, isPopup = false}) {
+export default function Navigation({ isAuthorized, isPopup = false }) {
+    const location = useLocation();
     return (
         <>
             {isAuthorized ?

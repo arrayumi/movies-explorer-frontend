@@ -17,6 +17,7 @@
 .navigation__links-list_type_auth {
     gap: 14px;
     justify-content: flex-end;
+    display: flex;
 }
 
 .navigation__links-list_type_popup {

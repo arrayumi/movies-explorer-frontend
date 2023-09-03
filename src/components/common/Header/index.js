@@ -16,7 +16,10 @@ export default function Header({ isAuthorized }) {
                 <img src={logo} className="header__logo" alt="Лого." />
             </NavLink>
             <Navigation isPopup={false} isAuthorized={isAuthorized} />
-            <button className={`header__burger-menu${!isAuthorized ? ' header__burger-menu_type_auth' : ''}`} type="button" onClick={onClick}></button>
+            {isAuthorized &&
+                <button className={`header__burger-menu${isAuthorized ? ' header__burger-menu_type_auth' : ''}`} type="button" onClick={onClick}>
+                </button>
+            }
         </header>
     )
 }
