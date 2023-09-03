@@ -4,7 +4,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
+}
+
+.page-404__text {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .page-404__title {
@@ -24,8 +31,7 @@
     color: #4285F4;
     font-size: 12px;
     font-weight: 400;
-    position: absolute;
-    bottom: 30px;
+    padding-bottom: 30px;
 }
 
 @media screen and (min-width: 768px) {
@@ -40,12 +46,12 @@
 
     .page-404__link {
         font-size: 14px;
-        bottom: 222px;
+        padding-bottom: 222px;
     }
 }
 
 @media screen and (min-width: 1024px) {
     .page-404__link {
-        bottom: 60px;
+        padding-bottom: 60px;
     }
 }
