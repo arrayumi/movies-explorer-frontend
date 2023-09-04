@@ -1,9 +1,7 @@
 import './index.css';
 import NavigationLink from './NavigationLink';
-import { useLocation } from 'react-router-dom';
 
 export default function Navigation({ isAuthorized, isPopup = false }) {
-    const location = useLocation();
     return (
         <>
             {isAuthorized ?
@@ -18,8 +16,8 @@ export default function Navigation({ isAuthorized, isPopup = false }) {
 
                 <nav className="navigation navigation_type_auth">
                     < ul className="navigation__links-list navigation__links-list_type_auth" >
-                        <NavigationLink link="/" title="Регистрация" className="navigation__link_type_auth" />
-                        <NavigationLink link="/" title="Войти" className="navigation__link_type_auth navigation__link_type_button" />
+                        <NavigationLink link="/signup" title="Регистрация" className="navigation__link_type_auth" />
+                        <NavigationLink link="/signin" title="Войти" className="navigation__link_type_auth navigation__link_type_button" />
                     </ul >
                 </nav >
             }
