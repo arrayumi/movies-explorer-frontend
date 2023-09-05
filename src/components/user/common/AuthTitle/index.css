@@ -1,0 +1,35 @@
+.auth__title-container {
+    display: flex;
+    flex-direction: column;
+    padding: 56px 0 80px;
+    align-items: center;
+    gap: 50px;
+}
+
+.auth__logo-link {
+    display: flex;
+}
+
+.auth__title-logo {
+    width: 38px;
+}
+
+.auth__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .auth__title-container {
+        align-items: flex-start;
+        gap: 40px;
+        padding: 232px 0 40px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .auth__title-container {
+        padding: 70px 0 40px;
+    }
+}

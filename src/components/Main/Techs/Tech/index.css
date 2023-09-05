@@ -1,0 +1,18 @@
+.techs__item {
+    background-color: #303030;
+    border-radius: 10px;
+    min-height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+}
+
+@media screen and (min-width: 1280px) {
+    .techs__item {
+        font-size: 14px;
+        letter-spacing: -0.56px;
+    }
+}

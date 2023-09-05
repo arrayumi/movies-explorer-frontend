@@ -1,0 +1,9 @@
+.movies-card__button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

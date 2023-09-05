@@ -1,0 +1,15 @@
+.main-element {
+    padding: 0 18px;
+}
+
+@media screen and (min-width: 768px) {
+    .main-element {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .main-element {
+        padding: 0 70px;
+    }
+}

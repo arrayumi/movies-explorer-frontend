@@ -1,0 +1,47 @@
+.header {
+    padding: 18px 14px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        padding: 18px 30px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .header {
+        padding: 28px 70px;
+    }
+}
+
+.header_type_main {
+    background-color: #073042;
+}
+
+.header__logo-link {
+    margin-right: 45px;
+    display: flex;
+}
+
+.header__logo {
+    width: 38px;
+}
+
+.header__burger-menu {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    background-image: url(../../../images/burger-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (min-width: 1280px) {
+    .header__burger-menu {
+        display: none;
+    }
+}
