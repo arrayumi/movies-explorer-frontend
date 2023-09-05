@@ -1,0 +1,18 @@
+.auth {
+    height: 100vh;
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    .auth {
+        padding: 0 186px 232px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .auth {
+        padding: 0 440px 70px;
+    }
+}

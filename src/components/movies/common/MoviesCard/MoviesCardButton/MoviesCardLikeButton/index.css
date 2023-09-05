@@ -1,0 +1,7 @@
+.movies-card__button_type_like {
+    background-image: url(../../../../../../images/movies-card-button-like.svg);
+}
+
+.movies-card__button_type_dislike {
+    background-image: url(../../../../../../images/movies-card-button-dislike.svg);
+}

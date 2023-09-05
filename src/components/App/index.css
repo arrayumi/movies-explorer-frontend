@@ -1,0 +1,23 @@
+@import url(../../vendor/normalize.css);
+@import url(../../vendor/fonts.css);
+
+.page {
+    color: white;
+    background-color: #202020;
+    font-family: 'Inter', 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: .7;
+}
+
+button:hover {
+    opacity: .8;
+}

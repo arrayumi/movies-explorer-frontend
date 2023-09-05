@@ -1,0 +1,86 @@
+.navigation__links-item {
+    display: flex;
+    align-items: center;
+}
+
+.navigation__link {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.navigation__link_type_auth {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.navigation__links-list_type_popup li:not(:last-child) a {
+    font-size: 18px;
+    display: block;
+    padding-bottom: 7px;
+}
+
+.navigation__links-list_type_popup li:not(:last-child) .navigation__link_active {
+    border-bottom: 2px white solid;
+}
+
+.navigation__link_type_button {
+    background-color: #3DDC84;
+    border: none;
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 3px;
+    color: black;
+}
+
+.navigation__link_active {
+    font-weight: 500;
+}
+
+.navigation__links-item_type_profile {
+    margin-left: auto;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: 40px;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    padding-left: 11px;
+    padding-right: 3px;
+    width: 86px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 7px;
+}
+
+.navigation__links-item_type_popup {
+    position: fixed;
+    bottom: 46px;
+}
+
+.navigation__profile-logo {
+    height: 26px;
+    width: 26px;
+    background-image: url(../../../../images/profile-icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #313131;
+    border-radius: 50px;
+}
+
+.navigation__profile-logo_type_main {
+    background-color: #0F4157;
+}
+
+@media screen and (min-width: 600px) {
+    .navigation__links-list_type_popup li:not(:last-child) a {
+        padding-bottom: 4px;
+    }
+
+    .navigation__links-item_type_popup {
+        bottom: 90px;
+    }
+}

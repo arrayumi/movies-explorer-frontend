@@ -1,0 +1,26 @@
+.article-title {
+    margin: 0;
+    padding: 70px 0 28px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.72px;
+}
+
+.article-element {
+    background-color: #202020;
+}
+
+@media screen and (min-width: 768px) {
+    .article-title {
+        font-size: 22px;
+        letter-spacing: -0.88px;
+        padding-bottom: 23px;
+        padding-top: 92px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .article-title {
+        padding-top: 110px;
+    }
+}

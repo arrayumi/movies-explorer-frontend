@@ -1,0 +1,134 @@
+.about-project__title {
+    border-bottom: 1px #DADADA solid;
+}
+
+.about-project__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 60px 0 60px;
+    margin: 0;
+    gap: 56px;
+    justify-content: center;
+}
+
+.about-project__subtitle {
+    margin: 0;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.72px;
+}
+
+.about-project__caption {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 0;
+}
+
+.about-project__timescale {
+    display: flex;
+    font-size: 11px;
+    font-weight: 400;
+    padding-bottom: 70px;
+}
+
+.about-project__timescale-item:first-child {
+    flex-grow: 1;
+    max-width: 100px;
+}
+
+.about-project__timescale-item {
+    flex-grow: 2;
+}
+
+.about-project__timescale-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 35px;
+    font-size: 11px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.about-project__timescale-block_color_green {
+    background-color: #3DDC84;
+    color: black;
+}
+
+.about-project__timescale-block_color_gray {
+    background-color: #303030;
+}
+
+.about-project__timescale-caption {
+    text-align: center;
+    color: #A0A0A0;
+    padding-top: 10px;
+    font-size: 11px;
+    font-weight: 400;
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .about-project__list {
+        flex-direction: row;
+        gap: 30px;
+        padding: 70px 0 93px;
+    }
+
+    .about-project__subtitle {
+        font-size: 20px;
+        letter-spacing: -0.8px;
+        margin-bottom: 22px;
+    }
+
+    .about-project__caption {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-project__timescale {
+        padding-bottom: 90px;
+    }
+
+    .about-project__timescale-block {
+        font-size: 14px;
+    }
+
+    .about-project__timescale-item:first-child {
+        max-width: 140px;
+    }
+
+    .about-project__timescale-caption {
+        padding-top: 14px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .about-project__list {
+        gap: 40px;
+        padding: 72px 0 110px;
+    }
+
+    .about-project__subtitle {
+        margin-bottom: 26px;
+    }
+
+    .about-project__caption {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .about-project__timescale {
+        padding-bottom: 110px;
+    }
+
+    .about-project__timescale-item:first-child {
+        max-width: 228px;
+    }
+}
