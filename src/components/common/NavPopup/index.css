@@ -31,6 +31,7 @@
 }
 
 .nav-popup__close-button {
+    cursor: pointer;
     background-color: transparent;
     border: none;
     width: 22px;
