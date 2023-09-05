@@ -9,10 +9,10 @@ export default function Auth({ children, ...params }) {
         <main>
             <section className="auth">
                 <AuthTitle title={params.title} />
-                <AuthForm formName={params.formName}>
+                <AuthForm formName={params.formName} handleSubmit={params.handleSubmit}>
                     {children}
+                    <AuthButton title={params.buttonTitle} />
                 </AuthForm>
-                <AuthButton title={params.buttonTitle} />
                 <AuthLink path={params.path} link={params.link} linkSpan={params.linkSpan} />
             </section>
         </main>

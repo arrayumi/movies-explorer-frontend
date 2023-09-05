@@ -6,7 +6,7 @@ export default function MoviesCard({ movie, isSaved, isSavedMovieCard }) {
     return (
         <li className="movies-card">
             <article>
-                <img src={movie.image} className="movies-card__image" alt={movie.nameRU} />
+                <img src={`https://api.nomoreparties.co/${movie.image.url}`} className="movies-card__image" alt={movie.nameRU} />
                 <div className="movies-card__name-container">
                     <h2 className="movies-card__name">{movie.nameRU}</h2>
                     {isSavedMovieCard ?

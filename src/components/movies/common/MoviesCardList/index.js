@@ -1,10 +1,9 @@
 import './index.css';
-import { movies } from '../../../../utils/constants';
 import MoviesCard from '../MoviesCard';
 import More from './More';
 import Preloader from '../../Movies/Preloader';
 
-export default function MoviesCardList() {
+export default function MoviesCardList({ movies }) {
     const moviesCardList = movies.map((movie, index) =>
         <MoviesCard movie={movie} isSaved={true} isSavedMovieCard={false} key={index} />)
     return (

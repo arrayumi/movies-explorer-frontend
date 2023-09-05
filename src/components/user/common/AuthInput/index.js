@@ -5,7 +5,14 @@ export default function AuthInput({...params}) {
     return (
         <label className="auth__input-field">
             <span className="auth__input-span">{params.span}</span>
-            <input className="auth__input" type={params.type} name={params.name} required minLength={2} maxLength={30} placeholder={params.name}></input>
+            <input className="auth__input" 
+            type={params.type} 
+            name={params.name} 
+            required 
+            minLength={2} 
+            maxLength={30} 
+            placeholder={params.name}
+            onChange={params.handleChange}></input>
             <span className="auth__input-error">{errorText}</span>
         </label>
     )

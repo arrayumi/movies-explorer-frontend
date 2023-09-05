@@ -4,13 +4,13 @@ import Footer from '../../../common/Footer';
 import SearchForm from '../../Movies/SearchForm';
 import MoviesCardList from '../MoviesCardList';
 
-export default function MoviesPage() {
+export default function MoviesPage({movies}) {
     return (
         <>
             <Header isAuthorized={true} />
             <main className="movies" aria-label="Фильмы.">
                 <SearchForm />
-                <MoviesCardList />
+                <MoviesCardList movies={movies} />
             </main>
             <Footer />
         </>
