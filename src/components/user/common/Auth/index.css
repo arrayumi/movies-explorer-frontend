@@ -5,6 +5,18 @@
     flex-direction: column;
 }
 
+.auth__form_type_error {
+    color: #FF004C;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 65px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
 @media screen and (min-width: 768px) {
     .auth {
         padding: 0 186px 232px;

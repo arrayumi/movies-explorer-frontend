@@ -2,7 +2,9 @@ const BASE_URL = 'https://api.arrayumi.nomoreparties.co';
 
 function checkRes(res) {
     if (res.ok) return res.json();
-    return Promise.reject(`Ошибка: ${res.status}`);
+    let message = res.status;
+    if (res.status === 409) { message = 'Пользователь с таким email уже существует.' }
+    return Promise.reject((new Error(message)));
 }
 
 export const register = ({ name, email, password }) => {
@@ -14,7 +16,9 @@ export const register = ({ name, email, password }) => {
         },
         body: JSON.stringify({ name, email, password })
     })
-        .then(res => {checkRes(res)});
+        .then(res => {
+            return checkRes(res);
+        });
 };
 
 export const authorize = ({ email, password }) => {
@@ -27,7 +31,9 @@ export const authorize = ({ email, password }) => {
         },
         body: JSON.stringify({ email, password })
     })
-        .then(res => checkRes(res));
+        .then(res => {
+            return checkRes(res)
+        });
 };
 
 export const getContent = () => {
@@ -38,5 +44,7 @@ export const getContent = () => {
             "Content-Type": "application/json",
         },
     })
-        .then(res => checkRes(res));
+        .then(res => {
+            return checkRes(res)
+        });
 }

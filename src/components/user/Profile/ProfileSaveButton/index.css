@@ -24,7 +24,7 @@
     color: white;
 }
 
-.profile__button_disabled {
+.profile__button:disabled {
     background-color: #F8F8F8;
     color: #C2C2C2;
 }

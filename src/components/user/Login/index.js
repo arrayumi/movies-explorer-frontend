@@ -1,26 +1,25 @@
 import Auth from "../common/Auth";
 import AuthInput from "../common/AuthInput";
 
-import { useState } from "react";
+import useFormWithValidation from "../../../hooks/UseFormWithValidation";
 
-export default function Login({ handleLogin }) {
+import { useEffect } from "react";
 
-    const [formValue, setFormValue] = useState({
-        email: '',
-        password: ''
-    });
+export default function Login({ handleLogin, isSuccess}) {
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormValue({
-            ...formValue,
-            [name]: value
-        });
-    }
+    const { values, handleChange, errors, isValid, resetForm, setValues, setIsValid } =
+        useFormWithValidation();
+
+    const { success } = isSuccess;
+
+    useEffect(() => {
+        resetForm();
+    }, [success]);
+
 
     function handleSubmit(e) {
         e.preventDefault();
-        const { email, password } = formValue;
+        const { email, password } = values;
         handleLogin({ email, password });
     }
 
@@ -32,9 +31,21 @@ export default function Login({ handleLogin }) {
             link="Регистрация"
             linkSpan="Ещё не зарегистрированы?"
             formName="login-form"
-            handleSubmit={handleSubmit}>
-            <AuthInput type="email" name="email" span="E-Mail" handleChange={handleChange} />
-            <AuthInput type="password" name="password" span="Пароль" handleChange={handleChange} />
+            handleSubmit={handleSubmit}
+            isSuccess={isSuccess}
+            isValid={isValid}>
+            <AuthInput type="email"
+                name="email"
+                span="E-Mail"
+                handleChange={handleChange}
+                value={values.email ?? ''}
+                error={errors.email} />
+            <AuthInput type="password"
+                name="password"
+                span="Пароль"
+                handleChange={handleChange}
+                value={values.password ?? ''}
+                error={errors.password} />
         </Auth>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './index.css';
 import Main from '../Main';
@@ -12,34 +12,69 @@ import NavPopup from '../common/NavPopup';
 
 import * as auth from '../../utils/userAuth';
 import ProtectedRoute from '../user/ProtectedRoute';
+import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
+
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
 
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    const [isSuccess, setIsSuccess] = useState({
+        success: true,
+        msg: ""
+    });
+
+    const [currentUser, setCurrentUser] = useState({});
+    const [savedMovies, setSavedMovies] = useState([]);
+    const [userData, setUserData] = useState({name: "", email: ""});
+
+
+    const token = localStorage.getItem("token");
+    useEffect(() => {
+        if (token) {
+            Promise.all([
+                setIsLoggedIn(true),
+                mainApi.getUserInfo(),
+                moviesApi.getMovies(),
+            ])
+                .then(([isLoggedIn, userData, movies]) => {
+                    setCurrentUser(userData);
+                    setSavedMovies(movies);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+    }, []);
+
+
     function handleRegister({ name, email, password }) {
         auth.register({ name, email, password })
             .then((res) => {
-                handleLogin({email, password})
-                // handleInfoTooltipOpen();
-                // handleInfoMessage(true);
+                if (res) {
+                    handleLogin({ email, password })
+                    setIsSuccess({ success: true, msg: "" });
+                }
             }
             )
             .catch((err) => {
-                console.log(err);
-                // handleInfoTooltipOpen();
-                // handleInfoMessage(false);
+                console.log(err.message);
+                setIsSuccess({ success: false, msg: err.message });
             });
     }
 
     function handleLoginState() {
         setIsLoggedIn(true);
-        // auth.getContent()
-        //     .then((data) => {
-        //         setEmail(data.email);
-        //     })
-        //     .catch(err => console.log(err));
+        auth.getContent()
+            .then((data) => {
+                const {name, email} = data;
+                console.log(data)
+                setUserData({name, email});
+            })
+            .catch(err => console.log(err));
     }
 
     function handleLogin({ email, password }) {
@@ -61,18 +96,20 @@ function App() {
 
     return (
         <div className="page">
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
-                <Route path="/signup" element={<Register handleRegister={handleRegister} />} />
+            <CurrentUserContext.Provider value={currentUser}>
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/signin" element={<Login handleLogin={handleLogin} isSuccess={isSuccess} setIsSuccess={setIsSuccess} />} />
+                    <Route path="/signup" element={<Register handleRegister={handleRegister} isSuccess={isSuccess} setIsSuccess={setIsSuccess} />} />
 
-                <Route path="/movies" element={<ProtectedRoute element={Movies} isLoggedIn={isLoggedIn} />} />
-                <Route path="/saved-movies" element={<ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />} />
-                <Route path="/profile" element={<ProtectedRoute element={Profile} isLoggedIn={isLoggedIn} />} />
+                    <Route path="/movies" element={<ProtectedRoute element={Movies} isLoggedIn={isLoggedIn} />} />
+                    <Route path="/saved-movies" element={<ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />} />
+                    <Route path="/profile" element={<ProtectedRoute element={Profile} isLoggedIn={isLoggedIn} userData={userData}/>} />
 
-                <Route path="*" element={<Page404 />} />
-            </Routes>
-            <NavPopup />
+                    <Route path="*" element={<Page404 />} />
+                </Routes>
+                <NavPopup />
+            </CurrentUserContext.Provider>
         </div>
     )
 }

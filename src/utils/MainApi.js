@@ -17,6 +17,14 @@ class MainApi {
         })
             .then(res => this._checkRes(res))
     }
+
+    getUserInfo() {
+        return fetch(`${this._url}/users/me`, {
+            credentials: 'include',
+            headers: this._headers,
+        })
+            .then(res => this._checkRes(res))
+    }
 }
 
 const mainApi = new MainApi({
