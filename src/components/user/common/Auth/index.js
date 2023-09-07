@@ -4,22 +4,22 @@ import AuthForm from "../AuthForm";
 import AuthButton from '../AuthButton';
 import AuthLink from '../AuthLink';
 
-export default function Auth({ children, ...params }) {
+export default function Auth({ children, ...props }) {
 
-    const { success, msg } = params.isSuccess;
+    const { success, msg } = props.isSuccess;
 
     return (
     <main>
         <section className="auth">
-            <AuthTitle title={params.title} />
+            <AuthTitle title={props.title} />
             <AuthForm
-                formName={params.formName}
-                handleSubmit={params.handleSubmit}>
+                formName={props.formName}
+                handleSubmit={props.handleSubmit}>
                 {children}
                 {!success && <span className="auth__form_type_error">{msg}</span>}
-                <AuthButton title={params.buttonTitle} isValid={params.isValid} />
+                <AuthButton title={props.buttonTitle} isValid={props.isValid} />
             </AuthForm>
-            <AuthLink path={params.path} link={params.link} linkSpan={params.linkSpan} />
+            <AuthLink path={props.path} link={props.link} linkSpan={props.linkSpan} />
         </section>
     </main>
     )

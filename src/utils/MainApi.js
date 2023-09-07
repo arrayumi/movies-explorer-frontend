@@ -7,7 +7,7 @@ class MainApi {
 
     _checkRes(res) {
         if (res.ok) return res.json();
-        return Promise.reject(`Ошибка ${res.status}`);
+        return Promise.reject((new Error(`Ошибка ${res.status}`)));
     }
 
     getSavedMovies() {
@@ -25,10 +25,20 @@ class MainApi {
         })
             .then(res => this._checkRes(res))
     }
+
+    setUserInfo({ name, email }) {
+        return fetch(`${this._url}/users/me`, {
+            method: "PATCH",
+            credentials: 'include',
+            headers: this._headers,
+            body: JSON.stringify({ name, email }),
+        })
+            .then((res) => this._checkRes(res));
+    }
 }
 
 const mainApi = new MainApi({
-    url: 'https://api.arrayumi.nomoreparties.co/',
+    url: 'https://api.arrayumi.nomoreparties.co',
     headers: {
         'Content-Type': 'application/json',
     }

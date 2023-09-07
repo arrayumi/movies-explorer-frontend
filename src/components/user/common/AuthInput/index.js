@@ -1,6 +1,6 @@
 import './index.css';
 
-export default function AuthInput({ ...params }) {
+export default function AuthInput(props) {
 
 
 
@@ -8,28 +8,28 @@ export default function AuthInput({ ...params }) {
     //     resetForm();
     // }, [success]);
 
-    const handleRemoveError = () => {
-        params.setIsSuccess({
-            success: true,
-            msg: "",
-            open: false,
-        });
-    };
+    // const handleRemoveError = () => {
+    //     props.setIsSuccess({
+    //         success: true,
+    //         msg: "",
+    //         open: false,
+    //     });
+    // };
 
     return (
         <label className="auth__input-field">
-            <span className="auth__input-span">{params.span}</span>
-            <input className={`auth__input ${params.error ? 'auth__input_type_error' : ''}`}
-                type={params.type}
-                name={params.name}
+            <span className="auth__input-span">{props.span}</span>
+            <input className={`auth__input ${props.error ? 'auth__input_type_error' : ''}`}
+                type={props.type}
+                name={props.name}
                 required
-                minLength={params.type === 'password' ? 8 : 2}
+                minLength={props.type === 'password' ? 8 : 2}
                 maxLength={30}
-                placeholder={params.name}
-                onChange={params.handleChange}
-                value={params.value}></input>
+                placeholder={props.name}
+                onChange={props.handleChange}
+                value={props.value}></input>
             <span className="auth__input-error">
-                {params.error}
+                {props.error}
             </span>
         </label>
     )

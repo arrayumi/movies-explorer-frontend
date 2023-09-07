@@ -31,11 +31,26 @@ export default function Register({ handleRegister, isSuccess }) {
             handleSubmit={handleSubmit}
             isValid={isValid}
             isSuccess={isSuccess}>
-            <AuthInput type="text" name="name" span="Имя" handleChange={handleChange} value={values.name ?? ''} error={errors.name}
+            <AuthInput type="text" 
+            name="name" 
+            span="Имя" 
+            handleChange={handleChange} 
+            value={values.name ?? ''} 
+            error={errors.name}
             />
-            <AuthInput type="email" name="email" span="E-Mail" handleChange={handleChange} value={values.email ?? ''} error={errors.email}
+            <AuthInput type="email" 
+            name="email" 
+            span="E-Mail" 
+            handleChange={handleChange} 
+            value={values.email ?? ''} 
+            error={errors.email}
             />
-            <AuthInput type="password" name="password" span="Пароль" handleChange={handleChange} value={values.password ?? ''} error={errors.password}
+            <AuthInput type="password" 
+            name="password" 
+            span="Пароль" 
+            handleChange={handleChange} 
+            value={values.password ?? ''} 
+            error={errors.password}
             />
         </Auth>
     )
