@@ -7,6 +7,15 @@
     margin-bottom: 10px;
 }
 
+.search-form__error {
+    color: #EE3465;
+    font-size: 11px;
+    font-weight: 400;
+    display: block;
+    padding-top: 20px;
+    text-align: center;
+}
+
 .search-form__input-container {
     position: relative;
 
@@ -15,6 +24,7 @@
 .search-form__input {
     border-radius: 40px;
     background-color: #2F2F2F;
+    color: white;
     border: none;
     font-size: 11px;
     font-style: normal;

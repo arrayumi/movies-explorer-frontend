@@ -37,13 +37,9 @@ function App() {
         const token = localStorage.getItem('token');
         if (token) {
             setIsLoggedIn(true);
-            Promise.all([
-                mainApi.getUserInfo(),
-                moviesApi.getMovies(),
-            ])
-                .then(([userData, movies]) => {
+            mainApi.getUserInfo()
+                .then((userData) => {
                     setCurrentUser(userData);
-                    setSavedMovies(movies);
                     navigate('/movies', { replace: true });
                 })
                 .catch(err => {
