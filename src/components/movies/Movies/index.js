@@ -3,7 +3,7 @@ import moviesApi from "../../../utils/MoviesApi";
 
 import { useState, useEffect } from "react";
 
-export default function Movies() {
+export default function Movies({isLoggedIn}) {
 
     const [movies, setMovies] = useState([]);
 
@@ -16,6 +16,6 @@ export default function Movies() {
     , []);
 
     return (
-        <MoviesPage movies={movies} />
+        <MoviesPage movies={movies} isLoggedIn={isLoggedIn} />
     )
 }

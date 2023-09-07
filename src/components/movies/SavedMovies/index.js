@@ -2,7 +2,7 @@ import MoviesPage from "../common/MoviesPage";
 import { useState, useEffect } from "react";
 import mainApi from "../../../utils/MainApi";
 
-export default function SavedMovies() {
+export default function SavedMovies({isLoggedIn}) {
 
     const [savedMovies, setSavedMovies] = useState([]);
 
@@ -18,6 +18,6 @@ export default function SavedMovies() {
     console.log(savedMovies)
 
     return (
-        <MoviesPage movies={savedMovies}/>
+        <MoviesPage movies={savedMovies} isLoggedIn={isLoggedIn}/>
     )
 }

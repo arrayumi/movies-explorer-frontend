@@ -1,10 +1,10 @@
 import './index.css';
 import NavigationLink from './NavigationLink';
 
-export default function Navigation({ isAuthorized, isPopup = false }) {
+export default function Navigation({ isLoggedIn, isPopup = false }) {
     return (
         <>
-            {isAuthorized ?
+            {isLoggedIn ?
                 <nav className="navigation">
                     <ul className={`navigation__links-list ${isPopup && 'navigation__links-list_type_popup'}`} >
                         {isPopup && <NavigationLink link="/" title="Главная" />}

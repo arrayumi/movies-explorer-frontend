@@ -1,7 +1,7 @@
 import './index.css';
 import Navigation from '../Navigation';
 
-export default function NavPopup() {
+export default function NavPopup({isLoggedIn}) {
 
     function onClick() {
         document.querySelector('.nav-popup').classList.remove('nav-popup_active');
@@ -10,7 +10,7 @@ export default function NavPopup() {
     return (
         <div className="nav-popup">
             <div className="nav-popup__container">
-            <Navigation isAuthorized={true} isPopup={true}/>
+            <Navigation isLoggedIn={isLoggedIn} isPopup={true}/>
             <button className="nav-popup__close-button" type="button" onClick={onClick}></button>
             </div>
         </div>

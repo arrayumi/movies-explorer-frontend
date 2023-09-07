@@ -2,7 +2,7 @@ const BASE_URL = 'https://api.arrayumi.nomoreparties.co';
 
 function checkRes(res) {
     if (res.ok) return res.json();
-    let message = res.status;
+    let message = `Ошибка: ${res.status}`;
     if (res.status === 409) { message = 'Пользователь с таким email уже существует.' }
     return Promise.reject((new Error(message)));
 }

@@ -4,13 +4,12 @@ import ProfileInput from './ProfileInput';
 import ProfileSaveButton from './ProfileSaveButton';
 import ProfileLink from './ProfileLink';
 
-export default function Profile({userData}) {
+export default function Profile({userData, isLoggedIn}) {
     const editMode = false;
 
-    console.log(userData)
     return (
         <>
-            <Header isAuthorized={true} />
+            <Header isLoggedIn={isLoggedIn} />
             <main>
                 <section className="profile">
                     <h1 className="profile__title">{`Привет, ${userData.name}`}</h1>

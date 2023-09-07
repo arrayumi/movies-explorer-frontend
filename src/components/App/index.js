@@ -31,24 +31,30 @@ function App() {
     const [savedMovies, setSavedMovies] = useState([]);
     const [userData, setUserData] = useState({name: "", email: ""});
 
-
-    const token = localStorage.getItem("token");
-    useEffect(() => {
+    function checkToken() {
+        const token = localStorage.getItem('token');
         if (token) {
+            setIsLoggedIn(true);
             Promise.all([
-                setIsLoggedIn(true),
-                mainApi.getUserInfo(),
+                auth.getContent(),
                 moviesApi.getMovies(),
             ])
-                .then(([isLoggedIn, userData, movies]) => {
+                .then(([userData, movies]) => {
                     setCurrentUser(userData);
+                    setUserData(userData);
                     setSavedMovies(movies);
+                    navigate('/movies', { replace: true });
                 })
                 .catch(err => {
                     console.log(err);
                 });
         }
-    }, []);
+    }
+
+    useEffect(() => {
+        checkToken();
+    }, [])
+ 
 
 
     function handleRegister({ name, email, password }) {
@@ -88,9 +94,8 @@ function App() {
             }
             )
             .catch((err) => {
-                console.log(err);
-                // handleInfoTooltipOpen();
-                // handleInfoMessage(false);
+                console.log(err.message);
+                setIsSuccess({ success: false, msg: err.message });
             });
     }
 
@@ -98,7 +103,7 @@ function App() {
         <div className="page">
             <CurrentUserContext.Provider value={currentUser}>
                 <Routes>
-                    <Route path="/" element={<Main />} />
+                    <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
                     <Route path="/signin" element={<Login handleLogin={handleLogin} isSuccess={isSuccess} setIsSuccess={setIsSuccess} />} />
                     <Route path="/signup" element={<Register handleRegister={handleRegister} isSuccess={isSuccess} setIsSuccess={setIsSuccess} />} />
 
@@ -108,7 +113,7 @@ function App() {
 
                     <Route path="*" element={<Page404 />} />
                 </Routes>
-                <NavPopup />
+                <NavPopup isLoggedIn={isLoggedIn} />
             </CurrentUserContext.Provider>
         </div>
     )
