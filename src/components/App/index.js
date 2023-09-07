@@ -12,8 +12,9 @@ import NavPopup from '../common/NavPopup';
 
 import * as auth from '../../utils/userAuth';
 import ProtectedRoute from '../user/ProtectedRoute';
+import AnonymousRoute from '../user/AnonymousRoute';
+
 import mainApi from '../../utils/MainApi';
-import moviesApi from '../../utils/MoviesApi';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -40,7 +41,6 @@ function App() {
             mainApi.getUserInfo()
                 .then((userData) => {
                     setCurrentUser(userData);
-                    navigate('/movies', { replace: true });
                 })
                 .catch(err => {
                     console.log(err);
@@ -108,6 +108,7 @@ function App() {
             });
     }
 
+
     function handleLogout() {
         auth.logout()
             .then(() => {
@@ -125,24 +126,33 @@ function App() {
             <CurrentUserContext.Provider value={currentUser}>
                 <Routes>
                     <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
-                    <Route path="/signin" element={<Login handleLogin={handleLogin}
-                        isSuccess={isSuccess}
-                        setIsSuccess={setIsSuccess} />} />
-                    <Route path="/signup" element={<Register handleRegister={handleRegister}
-                        isSuccess={isSuccess}
-                        setIsSuccess={setIsSuccess} />} />
+                    <Route path="/signin" element=
+                        {<AnonymousRoute element={Login}
+                            isLoggedIn={isLoggedIn}
+                            handleLogin={handleLogin}
+                            isSuccess={isSuccess}
+                            setIsSuccess={setIsSuccess} />} />
+                    <Route path="/signup" element=
+                        {<AnonymousRoute element={Register}
+                            isLoggedIn={isLoggedIn}
+                            handleRegister={handleRegister}
+                            isSuccess={isSuccess}
+                            setIsSuccess={setIsSuccess} />} />
 
-                    <Route path="/movies" element={<ProtectedRoute element={Movies} isLoggedIn={isLoggedIn} />} />
-                    <Route path="/saved-movies" element={<ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />
-                    } />
-                    <Route path="/profile" element={<ProtectedRoute element={Profile}
-                        isLoggedIn={isLoggedIn}
-                        handleEditProfile={handleEditProfile}
-                        isSuccess={isSuccess}
-                        isEditMode={isEditMode}
-                        setIsEditMode={setIsEditMode}
-                        handleLogout={handleLogout}
-                    />} />
+                    <Route path="/movies" element=
+                        {<ProtectedRoute element={Movies} isLoggedIn={isLoggedIn} />} />
+                    <Route path="/saved-movies" element=
+                        {<ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />
+                        } />
+                    <Route path="/profile" element=
+                        {<ProtectedRoute element={Profile}
+                            isLoggedIn={isLoggedIn}
+                            handleEditProfile={handleEditProfile}
+                            isSuccess={isSuccess}
+                            isEditMode={isEditMode}
+                            setIsEditMode={setIsEditMode}
+                            handleLogout={handleLogout}
+                        />} />
 
                     <Route path="*" element={<Page404 />} />
                 </Routes>
