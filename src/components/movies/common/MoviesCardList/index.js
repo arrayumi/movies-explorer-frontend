@@ -5,13 +5,19 @@ import Preloader from '../Preloader';
 import { useState, useEffect } from 'react';
 import { moviesListParams } from '../../../../utils/moviesListParams';
 
-export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovie, handleDeleteMovie, savedMovieCheck }) {
+export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovie, handleDeleteMovie, savedMovieCheck, isSavedMovieCard }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesListLength, setMoviesListLength] = useState(12);
   const [isMoreButton, setIsMoreButton] = useState(false);
 
   const moviesCardList = movies.slice(0, moviesListLength).map((movie) =>
-    <MoviesCard movie={movie} isSaved={savedMovieCheck(movie)} isSavedMovieCard={false} key={movie.id} handleSaveMovie={handleSaveMovie} handleDeleteMovie={handleDeleteMovie} />)
+    <MoviesCard
+      movie={movie}
+      isSaved={isSavedMovieCard ? true : savedMovieCheck(movie)}
+      isSavedMovieCard={isSavedMovieCard}
+      key={isSavedMovieCard ? movie._id : movie.id}
+      handleSaveMovie={handleSaveMovie}
+      handleDeleteMovie={handleDeleteMovie} />)
 
   useEffect(() => {
     const handleResize = (e) => {
@@ -42,7 +48,7 @@ export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovi
 
   useEffect(() => {
     // console.log(moviesListLength, movies.length)
-    moviesListLength < movies.length ?  setIsMoreButton(true) : setIsMoreButton(false);
+    moviesListLength < movies.length ? setIsMoreButton(true) : setIsMoreButton(false);
   }
     , [moviesCardList]);
 

@@ -1,23 +1,16 @@
 import MoviesPage from "../common/MoviesPage";
-import { useState, useEffect } from "react";
-import mainApi from "../../../utils/MainApi";
 
-export default function SavedMovies({isLoggedIn}) {
+export default function SavedMovies({ isLoggedIn, savedMovies, handleDeleteMovie }) {
 
-    const [savedMovies, setSavedMovies] = useState([]);
-
-    useEffect(() => {
-        mainApi.getSavedMovies()
-            .then(movies => setSavedMovies(movies))
-            .catch(err => {
-                console.log(err);
-            })
+    function handleSearch(e) {
+        e.preventDefault();
     }
-        , []);
-
-    console.log(savedMovies)
 
     return (
-        <MoviesPage movies={savedMovies} isLoggedIn={isLoggedIn}/>
+        <MoviesPage 
+        movies={savedMovies} 
+        isLoggedIn={isLoggedIn} 
+        handleDeleteMovie={handleDeleteMovie} 
+        handleSearch={handleSearch}/>
     )
 }

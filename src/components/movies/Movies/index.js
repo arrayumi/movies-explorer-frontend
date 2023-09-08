@@ -31,7 +31,6 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
             :
             setMovies(movies);
             setIsLoadingMovies(false);
-
     }
 
     return (

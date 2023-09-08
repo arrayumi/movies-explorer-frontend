@@ -2,26 +2,35 @@ import './index.css';
 import FilterCheckbox from './FilterCheckbox';
 import useFormWithValidation from '../../../../hooks/UseFormWithValidation';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { filterMovies } from '../../../../utils/filterMovies';
 
-export default function SearchForm({ handleSearch }) {
+export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies }) {
+    const location = useLocation();
+    const isSavedMoviePath = location.pathname === "/saved-movies";
+
     const { values, handleChange, isValid } = useFormWithValidation();
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
     useEffect(() => {
-        const searchRes = localStorage.getItem('search-result');
-        const checkboxState = JSON.parse(localStorage.getItem('is-checkbox-checked'));
-        if (searchRes !== null) values.search = searchRes;
-        if (checkboxState !== null) checkboxState === 'true' ? setIsCheckboxChecked(true) : setIsCheckboxChecked(false);
-        console.log(checkboxState)
+        if (!isSavedMoviePath) {
+            const searchRes = localStorage.getItem('search-result');
+            const checkboxState = JSON.parse(localStorage.getItem('is-checkbox-checked'));
+            if (searchRes !== null) values.search = searchRes;
+            if (checkboxState !== null) checkboxState === 'true' ? setIsCheckboxChecked(true) : setIsCheckboxChecked(false);
+        }
     }, [])
 
     function handleSubmit(e) {
         handleSearch(e);
-        localStorage.setItem('search-result', values.search);
-        localStorage.setItem('is-checkbox-cheked', JSON.stringify(isCheckboxChecked));
+        setFilteredMovies(filterMovies(movies, values.search, isCheckboxChecked));
+        if (!isSavedMoviePath) {
+            localStorage.setItem('search-result', values.search);
+            localStorage.setItem('is-checkbox-cheked', JSON.stringify(isCheckboxChecked));
+        }
     }
 
-    function handleCheckbox () {
+    function handleCheckbox() {
         setIsCheckboxChecked(!isCheckboxChecked);
     }
 
@@ -35,7 +44,7 @@ export default function SearchForm({ handleSearch }) {
                     </label>
                     <button type="submit" className="search-form__button"></button>
                 </div>
-                <FilterCheckbox isCheckboxChecked={isCheckboxChecked} handleCheckbox={handleCheckbox}/>
+                <FilterCheckbox isCheckboxChecked={isCheckboxChecked} handleCheckbox={handleCheckbox} />
             </form>
         </>
     )

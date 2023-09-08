@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './index.css';
 import Main from '../Main';
 import Movies from '../movies/Movies';
@@ -55,6 +55,14 @@ function App() {
 
     useEffect(() => {
         checkToken();
+    }, [])
+
+
+    useEffect(() => {
+        mainApi.getSavedMovies()
+            .then(movies => {
+                setSavedMovies(movies);
+            })
     }, [])
 
 
@@ -163,8 +171,6 @@ function App() {
             .catch(console.log);
     }
 
-    console.log(savedMovies)
-
 
     return (
         <div className="page">
@@ -193,7 +199,10 @@ function App() {
                             setMovies={setMovies}
                             savedMovieCheck={savedMovieCheck} />} />
                     <Route path="/saved-movies" element=
-                        {<ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />
+                        {<ProtectedRoute element={SavedMovies}
+                            isLoggedIn={isLoggedIn}
+                            handleDeleteMovie={handleDeleteMovie}
+                            savedMovies={savedMovies} />
                         } />
                     <Route path="/profile" element=
                         {<ProtectedRoute element={Profile}

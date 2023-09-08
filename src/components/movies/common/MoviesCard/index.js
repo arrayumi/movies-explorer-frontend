@@ -8,11 +8,11 @@ export default function MoviesCard({ movie, isSaved, isSavedMovieCard, handleSav
     return (
         <li className="movies-card">
             <article>
-                <img src={`https://api.nomoreparties.co/${movie.image.url}`} className="movies-card__image" alt={movie.nameRU} />
+                <img src={isSavedMovieCard ? `${movie.image}` : `https://api.nomoreparties.co/${movie.image.url}`} className="movies-card__image" alt={movie.nameRU} />
                 <div className="movies-card__name-container">
                     <h2 className="movies-card__name">{movie.nameRU}</h2>
                     {isSavedMovieCard ?
-                        <SavedMoviesCardButton /> :
+                        <SavedMoviesCardButton  isSaved={isSaved}movie={movie} handleDeleteMovie={handleDeleteMovie} handleSaveMovie={handleSaveMovie}/> :
                         <MoviesCardLikeButton isSaved={isSaved} handleSaveMovie={handleSaveMovie} movie={movie} handleDeleteMovie={handleDeleteMovie} />}
                 </div>
                 <p className="movies-card__duration">{calculateDuration(movie.duration)}</p>
