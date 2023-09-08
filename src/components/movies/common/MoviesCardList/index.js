@@ -3,7 +3,7 @@ import MoviesCard from '../MoviesCard';
 import More from './More';
 import Preloader from '../Preloader';
 import { useState, useEffect } from 'react';
-import { moviesListParams } from '../../../../utils/moviesListParams';
+import { MOVIESLIST_PARAMS } from '../../../../utils/moviesListParams';
 
 export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovie, handleDeleteMovie, savedMovieCheck, isSavedMovieCard }) {
   const [width, setWidth] = useState(window.innerWidth);
@@ -30,15 +30,15 @@ export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovi
   }, []);
 
   function countMoviesListLength(width) {
-    if (width > moviesListParams.desktop.width) {
-      setMoviesListLength(moviesListParams.desktop.movies.total);
+    if (width > MOVIESLIST_PARAMS.desktop.width) {
+      setMoviesListLength(MOVIESLIST_PARAMS.desktop.movies.total);
     } else if (
-      width <= moviesListParams.desktop.width &&
-      width >= moviesListParams.mobile.width
+      width <= MOVIESLIST_PARAMS.desktop.width &&
+      width >= MOVIESLIST_PARAMS.mobile.width
     ) {
-      setMoviesListLength(moviesListParams.tablet.movies.total);
+      setMoviesListLength(MOVIESLIST_PARAMS.tablet.movies.total);
     } else {
-      setMoviesListLength(moviesListParams.mobile.movies.total);
+      setMoviesListLength(MOVIESLIST_PARAMS.mobile.movies.total);
     }
   }
 
@@ -54,15 +54,15 @@ export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovi
 
 
   function showMoreMovies() {
-    if (width > moviesListParams.desktop.width) {
-      setMoviesListLength(moviesListLength + moviesListParams.desktop.movies.more);
+    if (width > MOVIESLIST_PARAMS.desktop.width) {
+      setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.desktop.movies.more);
     } else if (
-      width <= moviesListParams.desktop.width &&
-      width >= moviesListParams.mobile.width
+      width <= MOVIESLIST_PARAMS.desktop.width &&
+      width >= MOVIESLIST_PARAMS.mobile.width
     ) {
-      setMoviesListLength(moviesListLength + moviesListParams.tablet.movies.more);
+      setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.tablet.movies.more);
     } else {
-      setMoviesListLength(moviesListLength + moviesListParams.mobile.movies.more);
+      setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.mobile.movies.more);
     }
   }
 

@@ -1,4 +1,4 @@
-export const moviesListParams = {
+export const MOVIESLIST_PARAMS = {
     desktop: {
       width: 1200,
       movies: {

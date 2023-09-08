@@ -1,7 +1,7 @@
 import MoviesPage from "../common/MoviesPage";
 import moviesApi from "../../../utils/MoviesApi";
 
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck }) {
 
