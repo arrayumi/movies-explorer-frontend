@@ -1,12 +1,12 @@
 import './index.css';
 
-export default function More({ isMoreCards }) {
+export default function More({ isMoreButton, showMoreMovies }) {
     return (
-        <div className={`movies__more ${isMoreCards ?
+        <div className={`movies__more ${isMoreButton ?
             'movies__more_enabled' :
             'movies__more_disabled'}`}>
-            {isMoreCards ?
-                <button type="button" className="movies__more-button">Ещё</button> :
+            {isMoreButton ?
+                <button type="button" className="movies__more-button" onClick={showMoreMovies}>Ещё</button> :
                 null}
         </div>
     )

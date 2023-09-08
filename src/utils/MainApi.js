@@ -35,6 +35,27 @@ class MainApi {
         })
             .then((res) => this._checkRes(res));
     }
+
+    saveMovie(movie) {
+        return fetch(`${this._url}/movies`, {
+            method: "POST",
+            credentials: 'include',
+            headers: this._headers,
+            body: JSON.stringify(movie),
+        })
+            .then(res => this._checkRes(res))
+    }
+
+    deleteMovie(movieId) {
+        return fetch(`${this._url}/movies/${movieId}`, {
+            method: "DELETE",
+            credentials: 'include',
+            headers: this._headers,
+        })
+            .then(res => this._checkRes(res))
+    }
+
+
 }
 
 const mainApi = new MainApi({

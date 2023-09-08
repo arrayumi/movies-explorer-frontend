@@ -29,10 +29,15 @@ function App() {
     });
 
     const [currentUser, setCurrentUser] = useState({});
+
     const [savedMovies, setSavedMovies] = useState([]);
+    const [movies, setMovies] = useState([]);
 
     const [isEditMode, setIsEditMode] = useState(false);
 
+    function savedMovieCheck(movie) {
+        return savedMovies.some((item) => item.movieId === movie.id);
+    }
 
     function checkToken() {
         const token = localStorage.getItem('token');
@@ -112,13 +117,53 @@ function App() {
     function handleLogout() {
         auth.logout()
             .then(() => {
-                localStorage.removeItem('_id');
-                localStorage.removeItem('token');
+                localStorage.clear();
                 setIsLoggedIn(false);
                 setCurrentUser({});
             })
             .catch(err => console.log(err));
     }
+
+    function handleSaveMovie(movie) {
+        mainApi.saveMovie({
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: `https://api.nomoreparties.co/${movie.image.url}`,
+            trailerLink: movie.trailerLink,
+            thumbnail: `https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`,
+            owner: movie.owner,
+            movieId: movie.id,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN
+        })
+            .then((movie) => {
+                setSavedMovies([movie, ...savedMovies]);
+            })
+            .catch(console.log);
+    }
+
+    function handleDeleteMovie(movie) {
+        const savedMovie = savedMovies.find(
+            (item) => item.id === movie.movieId || item.movieId === movie.movieId
+        );
+        mainApi.deleteMovie(savedMovie._id)
+            .then(() => {
+                const newList = savedMovies.filter((item) => {
+                    if (item.movieId === movie.id || item.movieId === movie.movieId) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })
+                setSavedMovies(newList);
+            })
+            .catch(console.log);
+    }
+
+    console.log(savedMovies)
 
 
     return (
@@ -140,7 +185,13 @@ function App() {
                             setIsSuccess={setIsSuccess} />} />
 
                     <Route path="/movies" element=
-                        {<ProtectedRoute element={Movies} isLoggedIn={isLoggedIn} />} />
+                        {<ProtectedRoute element={Movies}
+                            isLoggedIn={isLoggedIn}
+                            handleSaveMovie={handleSaveMovie}
+                            handleDeleteMovie={handleDeleteMovie}
+                            movies={movies}
+                            setMovies={setMovies}
+                            savedMovieCheck={savedMovieCheck} />} />
                     <Route path="/saved-movies" element=
                         {<ProtectedRoute element={SavedMovies} isLoggedIn={isLoggedIn} />
                         } />
