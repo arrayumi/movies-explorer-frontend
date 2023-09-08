@@ -2,12 +2,9 @@ import './index.css';
 import FilterCheckbox from './FilterCheckbox';
 import useFormWithValidation from '../../../../hooks/UseFormWithValidation';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { filterMovies } from '../../../../utils/filterMovies';
 
-export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies }) {
-    const location = useLocation();
-    const isSavedMoviePath = location.pathname === "/saved-movies";
+export default function SearchForm({ handleSearch, movies, setFilteredMovies, isSavedMoviePath }) {
 
     const { values, handleChange, isValid } = useFormWithValidation();
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);

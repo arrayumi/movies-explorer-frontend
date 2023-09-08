@@ -21,15 +21,32 @@ export default function MoviesPage({
 
     const [filteredMovies, setFilteredMovies] = useState([]);
 
+    let moviesToRender;
+    if (isSavedMoviePath) {
+        if (filteredMovies.length === 0) {
+            moviesToRender = movies;
+        } else {
+            moviesToRender = filteredMovies;
+        }
+    } else {
+        moviesToRender = filteredMovies
+    }
+
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
             <main className="movies" aria-label="Фильмы.">
-                <SearchForm handleSearch={handleSearch} movies={movies} filteredMovies={filteredMovies} setFilteredMovies={setFilteredMovies} />
-                <MoviesCardList movies={isSavedMoviePath ? movies : filteredMovies} isLoadingMovies={isLoadingMovies} handleSaveMovie={handleSaveMovie}
+                <SearchForm isSavedMoviePath={isSavedMoviePath}
+                    handleSearch={handleSearch}
+                    movies={movies}
+                    filteredMovies={filteredMovies}
+                    setFilteredMovies={setFilteredMovies} />
+                <MoviesCardList movies={moviesToRender}
+                    isLoadingMovies={isLoadingMovies}
+                    handleSaveMovie={handleSaveMovie}
                     handleDeleteMovie={handleDeleteMovie}
-                    savedMovieCheck={savedMovieCheck} 
-                    isSavedMovieCard={isSavedMoviePath}/>
+                    savedMovieCheck={savedMovieCheck}
+                    isSavedMovieCard={isSavedMoviePath} />
                 {moviesNotFound && <span className="movies__not-found">Ничего не найдено.</span>}
             </main>
             <Footer />
