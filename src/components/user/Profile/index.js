@@ -8,7 +8,7 @@ import useFormWithValidation from '../../../hooks/UseFormWithValidation';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
 
-export default function Profile({ isLoggedIn, isSuccess, handleEditProfile, isEditMode, setIsEditMode, handleLogout }) {
+export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEditProfile, isEditMode, setIsEditMode, handleLogout }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -40,9 +40,13 @@ export default function Profile({ isLoggedIn, isSuccess, handleEditProfile, isEd
     }
 
     function clickEditButton() {
-        setIsEditMode(true)
+        setIsEditMode(true);
+        setIsSuccess({
+            success: false,
+            msg: "",
+        })
     }
-console.log(isDisabled)
+    console.log(isDisabled)
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
@@ -71,14 +75,14 @@ console.log(isDisabled)
                             setIsDisabled={setIsDisabled} />
                         {isEditMode && <ProfileSaveButton errorMessage={msg} isDisabled={isDisabled} isValid={isValid}/>}
                     </form>
-
+                    {success && <span className="profile__success-msg">{msg}</span>}
                     {!isEditMode &&
                         <ul className="profile__links-list">
                             <li>
                                 <button type="button" className="profile__button profile__button_type_edit" onClick={clickEditButton}>Редактировать</button>
                             </li>
                             <li>
-                                <ProfileLink link="/" text="Выйти из аккаунта" className="profile__link_type_logout" onClick={handleLogout}/>
+                                <ProfileLink link="/" text="Выйти из аккаунта" className="profile__link_type_logout" onClick={handleLogout} />
                             </li>
                         </ul>
                     }

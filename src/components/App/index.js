@@ -113,7 +113,7 @@ function App() {
         mainApi.setUserInfo(userInfo)
             .then((newInfo) => {
                 setCurrentUser(newInfo);
-                setIsSuccess({ success: true, msg: "" });
+                setIsSuccess({ success: true, msg: "Профиль успешно отредактирован" });
                 setIsEditMode(false);
             })
             .catch(err => {
@@ -210,6 +210,7 @@ function App() {
                             isLoggedIn={isLoggedIn}
                             handleEditProfile={handleEditProfile}
                             isSuccess={isSuccess}
+                            setIsSuccess={setIsSuccess}
                             isEditMode={isEditMode}
                             setIsEditMode={setIsEditMode}
                             handleLogout={handleLogout}

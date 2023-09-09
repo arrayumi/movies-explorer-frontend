@@ -45,6 +45,14 @@
     font-weight: 400;
 }
 
+.profile__success-msg {
+    color: #2BE080;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
     .profile {
         padding: 0 179px;
