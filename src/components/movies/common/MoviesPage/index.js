@@ -46,8 +46,8 @@ export default function MoviesPage({
                     handleSaveMovie={handleSaveMovie}
                     handleDeleteMovie={handleDeleteMovie}
                     savedMovieCheck={savedMovieCheck}
-                    isSavedMovieCard={isSavedMoviePath} />
-                {moviesNotFound && <span className="movies__not-found">Ничего не найдено.</span>}
+                    isSavedMovieCard={isSavedMoviePath} 
+                    moviesNotFound={moviesNotFound}/>
             </main>
             <Footer />
         </>

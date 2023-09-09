@@ -14,7 +14,6 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
             const searchRes = localStorage.getItem('search-result');
             const checkboxState = JSON.parse(localStorage.getItem('is-checkbox-checked'));
             if (searchRes !== null) values.search = searchRes;
-            console.log(checkboxState)
             if (checkboxState !== null) setIsCheckboxChecked(checkboxState);
         }
     }, [])

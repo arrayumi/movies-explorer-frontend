@@ -5,7 +5,8 @@ import Preloader from '../Preloader';
 import { useState, useEffect } from 'react';
 import { MOVIESLIST_PARAMS } from '../../../../utils/moviesListParams';
 
-export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovie, handleDeleteMovie, savedMovieCheck, isSavedMovieCard }) {
+export default function MoviesCardList({ movies, isLoadingMovies, 
+  handleSaveMovie, handleDeleteMovie, savedMovieCheck, isSavedMovieCard, moviesNotFound }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [moviesListLength, setMoviesListLength] = useState(12);
   const [isMoreButton, setIsMoreButton] = useState(false);
@@ -67,7 +68,7 @@ export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovi
   }
 
   return (
-    moviesCardList.length > 0 ?
+    ((moviesCardList.length > 0) || moviesNotFound) ?
     <>
       <ul className="movies__cardlist">{moviesCardList}</ul>
       {isLoadingMovies && <Preloader />}

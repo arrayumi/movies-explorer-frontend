@@ -6,7 +6,7 @@ import { useState} from "react";
 export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck }) {
 
     const [isLoadingMovies, setIsLoadingMovies] = useState(false);
-    const [moviesNotFound, setMoviesNotFound] = useState(false);
+    const [moviesNotFound, setMoviesNotFound] = useState(true);
 
     function handleSearch(e) {
         e.preventDefault();
@@ -16,8 +16,7 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
         movies === null ?
             moviesApi.getMovies()
                 .then(movies => {
-                    if (!movies) setMoviesNotFound(true);
-                    console.log('loading')
+                    setMoviesNotFound(false);
                     setMovies(movies);
                     localStorage.setItem('movies', JSON.stringify(movies));
     
