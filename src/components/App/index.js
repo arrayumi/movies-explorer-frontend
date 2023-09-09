@@ -34,10 +34,12 @@ function App() {
     const [movies, setMovies] = useState([]);
 
     const [isEditMode, setIsEditMode] = useState(false);
+    const [isPageLoading, setIsPageLoading] = useState(true);
 
     function savedMovieCheck(movie) {
         return savedMovies.some((item) => item.movieId === movie.id);
     }
+
 
     function checkToken() {
         const token = localStorage.getItem('token');
@@ -49,21 +51,20 @@ function App() {
                 })
                 .catch(err => {
                     console.log(err);
-                });
+                })
+                .finally(() => setIsPageLoading(false))
         }
     }
 
     useEffect(() => {
         checkToken();
-    }, [])
-
-
-    useEffect(() => {
         mainApi.getSavedMovies()
             .then(movies => {
                 setSavedMovies(movies);
             })
+            .catch(err => console.log(err))
     }, [])
+
 
 
     function handleRegister({ name, email, password }) {
@@ -168,7 +169,7 @@ function App() {
                 })
                 setSavedMovies(newList);
             })
-            .catch(console.log);
+            .catch(err => console.log(err));
     }
 
 
@@ -191,7 +192,7 @@ function App() {
                             setIsSuccess={setIsSuccess} />} />
 
                     <Route path="/movies" element=
-                        {<ProtectedRoute element={Movies}
+                        {<ProtectedRoute isPageLoading={isPageLoading} element={Movies}
                             isLoggedIn={isLoggedIn}
                             handleSaveMovie={handleSaveMovie}
                             handleDeleteMovie={handleDeleteMovie}
@@ -199,13 +200,13 @@ function App() {
                             setMovies={setMovies}
                             savedMovieCheck={savedMovieCheck} />} />
                     <Route path="/saved-movies" element=
-                        {<ProtectedRoute element={SavedMovies}
+                        {<ProtectedRoute isPageLoading={isPageLoading} element={SavedMovies}
                             isLoggedIn={isLoggedIn}
                             handleDeleteMovie={handleDeleteMovie}
                             savedMovies={savedMovies} />
                         } />
                     <Route path="/profile" element=
-                        {<ProtectedRoute element={Profile}
+                        {<ProtectedRoute isPageLoading={isPageLoading} element={Profile}
                             isLoggedIn={isLoggedIn}
                             handleEditProfile={handleEditProfile}
                             isSuccess={isSuccess}

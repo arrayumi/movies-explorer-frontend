@@ -29,7 +29,8 @@ export default function Profile({ isLoggedIn, isSuccess, handleEditProfile, isEd
 
 
     useEffect(() => {
-        setIsEditMode(false)
+        setIsEditMode(false);
+        setIsValid(false);
     }, [])
 
     function handleSubmit(e) {
@@ -41,7 +42,7 @@ export default function Profile({ isLoggedIn, isSuccess, handleEditProfile, isEd
     function clickEditButton() {
         setIsEditMode(true)
     }
-
+console.log(isDisabled)
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
