@@ -7,4 +7,4 @@
 http://arrayumi.nomoreparties.co/
 
 ### Ссылка на pull request: 
-https://github.com/arrayumi/movies-explorer-frontend/commits/level-3
+https://github.com/arrayumi/movies-explorer-frontend/pull/2
