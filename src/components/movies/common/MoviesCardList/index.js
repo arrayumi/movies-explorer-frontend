@@ -65,7 +65,6 @@ export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovi
       setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.mobile.movies.more);
     }
   }
-  console.log(moviesCardList.length)
 
   return (
     moviesCardList.length > 0 ?

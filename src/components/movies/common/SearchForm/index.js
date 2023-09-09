@@ -14,7 +14,8 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
             const searchRes = localStorage.getItem('search-result');
             const checkboxState = JSON.parse(localStorage.getItem('is-checkbox-checked'));
             if (searchRes !== null) values.search = searchRes;
-            if (checkboxState !== null) checkboxState === 'true' ? setIsCheckboxChecked(true) : setIsCheckboxChecked(false);
+            console.log(checkboxState)
+            if (checkboxState !== null) setIsCheckboxChecked(checkboxState);
         }
     }, [])
 
@@ -23,7 +24,7 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
         setFilteredMovies(filterMovies(movies, values.search, isCheckboxChecked));
         if (!isSavedMoviePath) {
             localStorage.setItem('search-result', values.search);
-            localStorage.setItem('is-checkbox-cheked', JSON.stringify(isCheckboxChecked));
+            localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
         }
     }
 
