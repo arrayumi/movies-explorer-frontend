@@ -18,6 +18,8 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
     const { success, msg } = isSuccess;
 
 
+
+
     // const isDisabled =!isValid ||
     // (currentUser.name === values.name && currentUser.email === values.email);
 
@@ -31,13 +33,32 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
     useEffect(() => {
         setIsEditMode(false);
         setIsValid(false);
+        setValues({
+            name: currentUser.name,
+            email: currentUser.email
+        })
     }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
-        const { name, email } = values;
+        const { name, email} = values;
         handleEditProfile({ name, email });
+        setIsDisabled(true);
     }
+
+
+    function inputsCheck(name) {
+        if (currentUser[name] !== values.name) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    useEffect(() => {
+        if (inputsCheck("name") || inputsCheck("email")) setIsDisabled(false); 
+    }, [values])
+
 
     function clickEditButton() {
         setIsEditMode(true);
@@ -46,7 +67,7 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
             msg: "",
         })
     }
-    console.log(isDisabled)
+    
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
@@ -73,7 +94,7 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
                             value={values.email ?? ''}
                             error={errors.email}
                             setIsDisabled={setIsDisabled} />
-                        {isEditMode && <ProfileSaveButton errorMessage={msg} isDisabled={isDisabled} isValid={isValid}/>}
+                        {isEditMode && <ProfileSaveButton errorMessage={msg} isDisabled={isDisabled} isValid={isValid} />}
                     </form>
                     {success && <span className="profile__success-msg">{msg}</span>}
                     {!isEditMode &&

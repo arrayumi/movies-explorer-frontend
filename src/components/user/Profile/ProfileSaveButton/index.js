@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './index.css';
 
 export default function ProfileSaveButton({ errorMessage, isValid, isDisabled}) {

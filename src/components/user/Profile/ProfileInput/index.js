@@ -1,21 +1,18 @@
 import './index.css';
-import { CurrentUserContext } from '../../../../contexts/CurrentUserContext';
-import { useContext, useEffect } from 'react';
 
 export default function ProfileInput(props) {
-    const currentUser = useContext(CurrentUserContext);
 
-    function inputCheck(inputName, value) {
-        if (currentUser[inputName] !== value) {
-            return props.setIsDisabled(false);
-        } else {
-            return props.setIsDisabled(true);
-        }
-    }
+    // function inputCheck(inputName, value) {
+    //     if (currentUser[inputName] !== value) {
+    //         return props.setIsDisabled(false);
+    //     } else {
+    //         return props.setIsDisabled(true);
+    //     }
+    // }
 
-    useEffect(() => {
-        inputCheck(props.name, props.value)
-    }, [props.value])
+    // useEffect(() => {
+    //     inputCheck(props.name, props.value)
+    // }, [props.value])
 
 
 
