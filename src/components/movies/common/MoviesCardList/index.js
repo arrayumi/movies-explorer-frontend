@@ -65,12 +65,16 @@ export default function MoviesCardList({ movies, isLoadingMovies, handleSaveMovi
       setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.mobile.movies.more);
     }
   }
+  console.log(moviesCardList.length)
 
   return (
+    moviesCardList.length > 0 ?
     <>
       <ul className="movies__cardlist">{moviesCardList}</ul>
       {isLoadingMovies && <Preloader />}
       <More isMoreButton={isMoreButton} showMoreMovies={showMoreMovies} />
     </>
+    :
+    <span className="movies__cardlist-error">Ничего не найдено</span>
   )
 }
