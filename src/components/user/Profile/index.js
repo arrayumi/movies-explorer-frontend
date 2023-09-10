@@ -47,16 +47,16 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
     }
 
 
-    function inputsCheck(name) {
-        if (currentUser[name] !== values.name) {
-            return false;
-        } else {
-            return true;
-        }
+    function nameInputsCheck() {
+        return currentUser.name === values.name ? false : true;
+    }
+
+    function emailInputsCheck() {
+        return currentUser.email === values.email ? false : true;
     }
 
     useEffect(() => {
-        if (inputsCheck("name") || inputsCheck("email")) setIsDisabled(false); 
+        (nameInputsCheck() || emailInputsCheck())  ? setIsDisabled(false) : setIsDisabled(true);
     }, [values])
 
 
