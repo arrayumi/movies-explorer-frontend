@@ -38,7 +38,7 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
                 <div className="search-form__input-container">
                     <label className="search-form__field">
                         <input name="search" className="search-form__input" placeholder="Фильм" required value={values.search ?? ''} onChange={handleChange}></input>
-                        {!isValid && <span className="search-form__error">Нужно ввести ключевое слово</span>}
+                        {values.search === '' && <span className="search-form__error">Нужно ввести ключевое слово</span>}
                     </label>
                     <button type="submit" className="search-form__button"></button>
                 </div>
