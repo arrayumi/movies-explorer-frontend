@@ -3,7 +3,7 @@ import AuthInput from "../common/AuthInput";
 import { useEffect } from "react";
 import useFormWithValidation from "../../../hooks/UseFormWithValidation";
 
-export default function Register({ handleRegister, isSuccess }) {
+export default function Register({ handleRegister, isSuccess, setIsSuccess }) {
 
     const { values, handleChange, errors, isValid, resetForm, setValues, setIsValid } =
         useFormWithValidation();
@@ -30,7 +30,8 @@ export default function Register({ handleRegister, isSuccess }) {
             linkSpan="Уже зарегистрированы?"
             handleSubmit={handleSubmit}
             isValid={isValid}
-            isSuccess={isSuccess}>
+            isSuccess={isSuccess}
+            setIsSuccess={setIsSuccess}>
             <AuthInput type="text" 
             name="name" 
             span="Имя" 

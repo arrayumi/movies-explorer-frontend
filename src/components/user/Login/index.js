@@ -5,7 +5,7 @@ import useFormWithValidation from "../../../hooks/UseFormWithValidation";
 
 import { useEffect } from "react";
 
-export default function Login({ handleLogin, isSuccess}) {
+export default function Login({ handleLogin, isSuccess, setIsSuccess}) {
 
     const { values, handleChange, errors, isValid, resetForm, setValues, setIsValid } =
         useFormWithValidation();
@@ -33,6 +33,7 @@ export default function Login({ handleLogin, isSuccess}) {
             formName="login-form"
             handleSubmit={handleSubmit}
             isSuccess={isSuccess}
+            setIsSuccess={setIsSuccess}
             isValid={isValid}>
             <AuthInput type="email"
                 name="email"

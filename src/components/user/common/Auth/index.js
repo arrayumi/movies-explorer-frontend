@@ -3,10 +3,16 @@ import AuthTitle from "../AuthTitle";
 import AuthForm from "../AuthForm";
 import AuthButton from '../AuthButton';
 import AuthLink from '../AuthLink';
+import { useEffect } from 'react';
 
 export default function Auth({ children, ...props }) {
 
     const { success, msg } = props.isSuccess;
+
+    useEffect(()=> props.setIsSuccess({
+        success: true,
+        msg: ""
+    }), [])
 
     return (
     <main>
