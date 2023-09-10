@@ -27,7 +27,8 @@ export default function AuthInput(props) {
                 maxLength={30}
                 placeholder={props.name}
                 onChange={props.handleChange}
-                value={props.value}></input>
+                value={props.value}
+                disabled={props.sendingData}></input>
             <span className="auth__input-error">
                 {props.error}
             </span>

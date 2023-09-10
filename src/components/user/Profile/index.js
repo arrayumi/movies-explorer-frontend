@@ -8,7 +8,8 @@ import useFormWithValidation from '../../../hooks/UseFormWithValidation';
 import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
 
-export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEditProfile, isEditMode, setIsEditMode, handleLogout }) {
+export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEditProfile, isEditMode, 
+    setIsEditMode, handleLogout, sendingData }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -84,7 +85,8 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
                             handleChange={handleChange}
                             value={values.name ?? ''}
                             error={errors.name}
-                            setIsDisabled={setIsDisabled} />
+                            setIsDisabled={setIsDisabled}
+                            sendingData={sendingData} />
                         <ProfileInput
                             title="E-mail"
                             name="email"
@@ -93,8 +95,9 @@ export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEdi
                             handleChange={handleChange}
                             value={values.email ?? ''}
                             error={errors.email}
-                            setIsDisabled={setIsDisabled} />
-                        {isEditMode && <ProfileSaveButton errorMessage={msg} isDisabled={isDisabled} isValid={isValid} />}
+                            setIsDisabled={setIsDisabled}
+                            sendingData={sendingData} />
+                        {isEditMode && <ProfileSaveButton errorMessage={msg} isDisabled={isDisabled} isValid={isValid} sendingData={sendingData} />}
                     </form>
                     {success && <span className="profile__success-msg">{msg}</span>}
                     {!isEditMode &&

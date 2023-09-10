@@ -3,24 +3,25 @@ import moviesApi from "../../../utils/MoviesApi";
 
 import { useEffect, useState } from "react";
 
-export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck,
- }) {
+export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
+    handleDeleteMovie, savedMovieCheck, sendingData, setSendingData
+}) {
 
     const [isLoadingMovies, setIsLoadingMovies] = useState(false);
     const [moviesNotFound, setMoviesNotFound] = useState(false);
 
-useEffect(() => {
-    const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
-    moviesInStorage !== null && setMovies(moviesInStorage);
-}, [])    
-
+    useEffect(() => {
+        const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
+        moviesInStorage !== null && setMovies(moviesInStorage);
+    }, [])
 
     function handleSearch(e) {
         e.preventDefault();
         setIsLoadingMovies(true);
         const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
         localStorage.setItem('search-result', e.target.elements.search.value);
-        moviesInStorage === null ?
+        if(moviesInStorage === null) {
+            setSendingData(true);
             moviesApi.getMovies()
                 .then(movies => {
                     setMoviesNotFound(false);
@@ -33,10 +34,11 @@ useEffect(() => {
                 })
                 .finally(() => {
                     setIsLoadingMovies(false);
+                    setSendingData(false);
                 })
-            :
-            setMovies(moviesInStorage);
-            setMoviesNotFound(false);
+        } else {
+            setMovies(moviesInStorage);}
+        setMoviesNotFound(false);
         setIsLoadingMovies(false);
     }
 
@@ -51,6 +53,7 @@ useEffect(() => {
             handleSaveMovie={handleSaveMovie}
             handleDeleteMovie={handleDeleteMovie}
             savedMovieCheck={savedMovieCheck}
-            setMoviesNotFound={setMoviesNotFound} />
+            setMoviesNotFound={setMoviesNotFound}
+            sendingData={sendingData}/>
     )
 }

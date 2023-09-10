@@ -25,7 +25,7 @@ export default function ProfileInput(props) {
                 placeholder={props.placeholder}
                 minLength={2}
                 maxLength={30}
-                disabled={!props.isEditMode}
+                disabled={!props.isEditMode || props.sendingData}
                 onChange={props.handleChange}
                 value={props.value}
             ></input>

@@ -15,7 +15,8 @@ export default function MoviesPage({
     handleSaveMovie,
     handleDeleteMovie,
     savedMovieCheck,
-setMoviesNotFound }) {
+    setMoviesNotFound,
+    sendingData}) {
 
     const location = useLocation();
     const isSavedMoviePath = location.pathname === "/saved-movies";
@@ -43,7 +44,8 @@ setMoviesNotFound }) {
                     movies={movies}
                     filteredMovies={filteredMovies}
                     setFilteredMovies={setFilteredMovies}
-                    setMoviesNotFound={setMoviesNotFound} />
+                    setMoviesNotFound={setMoviesNotFound}
+                    sendingData={sendingData} />
                 <MoviesCardList movies={moviesToRender}
                     isLoadingMovies={isLoadingMovies}
                     handleSaveMovie={handleSaveMovie}

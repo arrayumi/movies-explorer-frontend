@@ -36,6 +36,8 @@ function App() {
     const [isEditMode, setIsEditMode] = useState(false);
     const [isPageLoading, setIsPageLoading] = useState(true);
 
+    const [sendingData, setSendingData] = useState(false);
+
     function savedMovieCheck(movie) {
         return savedMovies.some((item) => item.movieId === movie.id);
     }
@@ -68,6 +70,7 @@ function App() {
 
 
     function handleRegister({ name, email, password }) {
+        setSendingData(true);
         auth.register({ name, email, password })
             .then((res) => {
                 if (res) {
@@ -80,7 +83,8 @@ function App() {
             .catch((err) => {
                 console.log(err.message);
                 setIsSuccess({ success: false, msg: err.message });
-            });
+            })
+            .finally(() => setSendingData(false));
     }
 
     function handleLoginState() {
@@ -94,6 +98,7 @@ function App() {
 
     function handleLogin({ email, password }) {
         setIsPageLoading(true);
+        setSendingData(true);
         auth.authorize({ email, password })
             .then((data) => {
                 if (data.token) {
@@ -108,10 +113,14 @@ function App() {
                 console.log(err.message);
                 setIsSuccess({ success: false, msg: err.message });
             })
-            .finally(() => setIsPageLoading(false))
+            .finally(() => {
+                setIsPageLoading(false);
+                setSendingData(false);
+            })
     }
 
     function handleEditProfile(userInfo) {
+        setSendingData(true);
         mainApi.setUserInfo(userInfo)
             .then((newInfo) => {
                 setCurrentUser(newInfo);
@@ -121,7 +130,8 @@ function App() {
             .catch(err => {
                 console.log(err);
                 setIsSuccess({ success: false, msg: err.message });
-            });
+            })
+            .finally(() => setSendingData(false));
     }
 
 
@@ -185,13 +195,15 @@ function App() {
                             isLoggedIn={isLoggedIn}
                             handleLogin={handleLogin}
                             isSuccess={isSuccess}
-                            setIsSuccess={setIsSuccess} />} />
+                            setIsSuccess={setIsSuccess}
+                            sendingData={sendingData} />} />
                     <Route path="/signup" element=
                         {<AnonymousRoute element={Register}
                             isLoggedIn={isLoggedIn}
                             handleRegister={handleRegister}
                             isSuccess={isSuccess}
-                            setIsSuccess={setIsSuccess} />} />
+                            setIsSuccess={setIsSuccess}
+                            sendingData={sendingData} />} />
 
                     <Route path="/movies" element=
                         {<ProtectedRoute isPageLoading={isPageLoading}
@@ -201,12 +213,16 @@ function App() {
                             handleDeleteMovie={handleDeleteMovie}
                             movies={movies}
                             setMovies={setMovies}
-                            savedMovieCheck={savedMovieCheck} />} />
+                            savedMovieCheck={savedMovieCheck} 
+                            sendingData={sendingData}
+                            setSendingData={setSendingData}/>} />
                     <Route path="/saved-movies" element=
                         {<ProtectedRoute isPageLoading={isPageLoading} element={SavedMovies}
                             isLoggedIn={isLoggedIn}
                             handleDeleteMovie={handleDeleteMovie}
-                            savedMovies={savedMovies}/>
+                            savedMovies={savedMovies}
+                            sendingData={sendingData}
+                            setSendingData={setSendingData} />
                         } />
                     <Route path="/profile" element=
                         {<ProtectedRoute isPageLoading={isPageLoading} element={Profile}
@@ -217,6 +233,7 @@ function App() {
                             isEditMode={isEditMode}
                             setIsEditMode={setIsEditMode}
                             handleLogout={handleLogout}
+                            sendingData={sendingData}
                         />} />
 
                     <Route path="*" element={<Page404 />} />

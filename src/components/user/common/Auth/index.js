@@ -23,7 +23,7 @@ export default function Auth({ children, ...props }) {
                 handleSubmit={props.handleSubmit}>
                 {children}
                 {!success && <span className="auth__form_type_error">{msg}</span>}
-                <AuthButton title={props.buttonTitle} isValid={props.isValid} />
+                <AuthButton title={props.buttonTitle} isValid={props.isValid} sendingData={props.sendingData}/>
             </AuthForm>
             <AuthLink path={props.path} link={props.link} linkSpan={props.linkSpan} />
         </section>

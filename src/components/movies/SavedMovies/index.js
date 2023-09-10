@@ -9,7 +9,6 @@ export default function SavedMovies({ isLoggedIn, savedMovies, handleDeleteMovie
         e.preventDefault();
     }
 
-    console.log(savedMovies)
 
     return (
         <MoviesPage 
