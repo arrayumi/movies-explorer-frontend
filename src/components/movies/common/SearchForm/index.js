@@ -32,7 +32,6 @@ export default function SearchForm({ handleSearch, movies, filteredMovies, setFi
         if (!isSavedMoviePath) {
             localStorage.setItem('search-query', values.search);
             localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
-            console.log(filteredMovies)
             localStorage.setItem('search-result', JSON.stringify(searchResults));
         }
     }
