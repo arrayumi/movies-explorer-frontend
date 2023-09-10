@@ -55,7 +55,7 @@ export default function MoviesCardList({ movies, isLoadingMovies,
     , [moviesCardList]);
 
   
-
+console.log(moviesNotFound)
 
   function showMoreMovies() {
     if (width > MOVIESLIST_PARAMS.desktop.width) {
@@ -71,7 +71,7 @@ export default function MoviesCardList({ movies, isLoadingMovies,
   }
 
   return (
-    ((moviesCardList.length > 0) || moviesNotFound) ?
+    !moviesNotFound ?
     <>
       <ul className="movies__cardlist">{moviesCardList}</ul>
       {isLoadingMovies && <Preloader />}

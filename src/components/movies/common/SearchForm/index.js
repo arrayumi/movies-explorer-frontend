@@ -4,10 +4,12 @@ import useFormWithValidation from '../../../../hooks/UseFormWithValidation';
 import { useEffect, useState } from 'react';
 import { filterMovies } from '../../../../utils/filterMovies';
 
-export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies, isSavedMoviePath }) {
+export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies, isSavedMoviePath, setMoviesNotFound }) {
 
     const { values, handleChange, isValid, setIsValid } = useFormWithValidation();
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+    const [isSavedMoviesListFiltered, setIsSavedMoviesListFiltered] = useState(false);
 
     useEffect(() => {
         if (!isSavedMoviePath) {
@@ -20,21 +22,32 @@ export default function SearchForm({ handleSearch, movies, filteredMovies, setFi
         }
     }, [])
 
+    useEffect(() => {
+        if (isSavedMoviesListFiltered) {
+            const searchResults = filterMovies(movies, values.search, isCheckboxChecked);
+            searchResults.length > 0 ? setMoviesNotFound(false) : setMoviesNotFound(true);
+            setFilteredMovies(searchResults);
+        }
+    }, [movies])
+
     function handleSubmit(e) {
         if (values.search === undefined || values.search === '') {
             e.preventDefault();
             setIsValid(false);
             setFilteredMovies([]);
         } else {
-        handleSearch(e);
-        const searchResults = filterMovies(movies, values.search, isCheckboxChecked)
-        setFilteredMovies(searchResults);
-        if (!isSavedMoviePath) {
-            localStorage.setItem('search-query', values.search);
-            localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
-            localStorage.setItem('search-result', JSON.stringify(searchResults));
+            handleSearch(e);
+            const searchResults = filterMovies(movies, values.search, isCheckboxChecked);
+            searchResults.length > 0 ? setMoviesNotFound(false) : setMoviesNotFound(true);
+            setFilteredMovies(searchResults);
+            if (!isSavedMoviePath) {
+                localStorage.setItem('search-query', values.search);
+                localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
+                localStorage.setItem('search-result', JSON.stringify(searchResults));
+            } else {
+                setIsSavedMoviesListFiltered(true);
+            }
         }
-    }
     }
 
     function handleCheckbox() {

@@ -206,7 +206,7 @@ function App() {
                         {<ProtectedRoute isPageLoading={isPageLoading} element={SavedMovies}
                             isLoggedIn={isLoggedIn}
                             handleDeleteMovie={handleDeleteMovie}
-                            savedMovies={savedMovies} />
+                            savedMovies={savedMovies}/>
                         } />
                     <Route path="/profile" element=
                         {<ProtectedRoute isPageLoading={isPageLoading} element={Profile}

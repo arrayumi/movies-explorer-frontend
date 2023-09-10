@@ -3,10 +3,11 @@ import moviesApi from "../../../utils/MoviesApi";
 
 import { useEffect, useState } from "react";
 
-export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck }) {
+export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck,
+ }) {
 
     const [isLoadingMovies, setIsLoadingMovies] = useState(false);
-    const [moviesNotFound, setMoviesNotFound] = useState(true);
+    const [moviesNotFound, setMoviesNotFound] = useState(false);
 
 useEffect(() => {
     const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
@@ -35,6 +36,7 @@ useEffect(() => {
                 })
             :
             setMovies(moviesInStorage);
+            setMoviesNotFound(false);
         setIsLoadingMovies(false);
     }
 
@@ -48,6 +50,7 @@ useEffect(() => {
             moviesNotFound={moviesNotFound}
             handleSaveMovie={handleSaveMovie}
             handleDeleteMovie={handleDeleteMovie}
-            savedMovieCheck={savedMovieCheck} />
+            savedMovieCheck={savedMovieCheck}
+            setMoviesNotFound={setMoviesNotFound} />
     )
 }

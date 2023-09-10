@@ -3,7 +3,7 @@ import Header from '../../../common/Header';
 import Footer from '../../../common/Footer';
 import SearchForm from '../SearchForm'
 import MoviesCardList from '../MoviesCardList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function MoviesPage({
@@ -14,7 +14,8 @@ export default function MoviesPage({
     moviesNotFound,
     handleSaveMovie,
     handleDeleteMovie,
-    savedMovieCheck }) {
+    savedMovieCheck,
+setMoviesNotFound }) {
 
     const location = useLocation();
     const isSavedMoviePath = location.pathname === "/saved-movies";
@@ -41,14 +42,15 @@ export default function MoviesPage({
                     handleSearch={handleSearch}
                     movies={movies}
                     filteredMovies={filteredMovies}
-                    setFilteredMovies={setFilteredMovies} />
+                    setFilteredMovies={setFilteredMovies}
+                    setMoviesNotFound={setMoviesNotFound} />
                 <MoviesCardList movies={moviesToRender}
                     isLoadingMovies={isLoadingMovies}
                     handleSaveMovie={handleSaveMovie}
                     handleDeleteMovie={handleDeleteMovie}
                     savedMovieCheck={savedMovieCheck}
-                    isSavedMovieCard={isSavedMoviePath} 
-                    moviesNotFound={moviesNotFound}/>
+                    isSavedMovieCard={isSavedMoviePath}
+                    moviesNotFound={moviesNotFound} />
             </main>
             <Footer />
         </>
