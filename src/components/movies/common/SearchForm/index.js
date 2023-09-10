@@ -19,14 +19,17 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
     }, [])
 
     function handleSubmit(e) {
+        if (values.search === '') {
+            e.preventDefault();
+            setIsValid(false);
+        } else {
         handleSearch(e);
-        // console.log(movies, values.search)
         setFilteredMovies(filterMovies(movies, values.search = '', isCheckboxChecked));
         if (!isSavedMoviePath) {
             localStorage.setItem('search-result', values.search);
             localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
         }
-        if (values.search === '') setIsValid(false);
+    }
     }
 
     function handleCheckbox() {
