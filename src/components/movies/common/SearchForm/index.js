@@ -19,7 +19,8 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
     }, [])
 
     function handleSubmit(e) {
-        if (values.search === '') {
+        console.log(values.search)
+        if (values.search === undefined) {
             e.preventDefault();
             setIsValid(false);
         } else {
