@@ -6,7 +6,7 @@ import { filterMovies } from '../../../../utils/filterMovies';
 
 export default function SearchForm({ handleSearch, movies, setFilteredMovies, isSavedMoviePath }) {
 
-    const { values, handleChange, isValid } = useFormWithValidation();
+    const { values, handleChange, isValid, setIsValid } = useFormWithValidation();
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
     useEffect(() => {
@@ -26,6 +26,7 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
             localStorage.setItem('search-result', values.search);
             localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
         }
+        if (values.search === '') setIsValid(false);
     }
 
     function handleCheckbox() {
@@ -38,7 +39,7 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
                 <div className="search-form__input-container">
                     <label className="search-form__field">
                         <input name="search" className="search-form__input" placeholder="Фильм" required value={values.search ?? ''} onChange={handleChange}></input>
-                        {values.search === '' && <span className="search-form__error">Нужно ввести ключевое слово</span>}
+                        {!isValid && <span className="search-form__error">Нужно ввести ключевое слово</span>}
                     </label>
                     <button type="submit" className="search-form__button"></button>
                 </div>
