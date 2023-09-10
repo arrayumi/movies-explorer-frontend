@@ -20,7 +20,8 @@ export default function SearchForm({ handleSearch, movies, setFilteredMovies, is
 
     function handleSubmit(e) {
         handleSearch(e);
-        setFilteredMovies(filterMovies(movies, values.search, isCheckboxChecked));
+        // console.log(movies, values.search)
+        setFilteredMovies(filterMovies(movies, values.search = '', isCheckboxChecked));
         if (!isSavedMoviePath) {
             localStorage.setItem('search-result', values.search);
             localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
