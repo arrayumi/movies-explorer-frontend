@@ -4,31 +4,36 @@ import useFormWithValidation from '../../../../hooks/UseFormWithValidation';
 import { useEffect, useState } from 'react';
 import { filterMovies } from '../../../../utils/filterMovies';
 
-export default function SearchForm({ handleSearch, movies, setFilteredMovies, isSavedMoviePath }) {
+export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies, isSavedMoviePath }) {
 
     const { values, handleChange, isValid, setIsValid } = useFormWithValidation();
     const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
     useEffect(() => {
         if (!isSavedMoviePath) {
-            const searchRes = localStorage.getItem('search-result');
+            const searchQuery = localStorage.getItem('search-query');
             const checkboxState = JSON.parse(localStorage.getItem('is-checkbox-checked'));
-            if (searchRes !== null) values.search = searchRes;
+            const searchResult = JSON.parse(localStorage.getItem('search-result'));
+            if (searchQuery !== null) values.search = searchQuery;
             if (checkboxState !== null) setIsCheckboxChecked(checkboxState);
+            if (searchResult !== null) setFilteredMovies(searchResult);
         }
     }, [])
 
     function handleSubmit(e) {
-        console.log(values.search)
-        if (values.search === undefined) {
+        if (values.search === undefined || values.search === '') {
             e.preventDefault();
             setIsValid(false);
+            setFilteredMovies([]);
         } else {
         handleSearch(e);
-        setFilteredMovies(filterMovies(movies, values.search = '', isCheckboxChecked));
+        const searchResults = filterMovies(movies, values.search, isCheckboxChecked)
+        setFilteredMovies(searchResults);
         if (!isSavedMoviePath) {
-            localStorage.setItem('search-result', values.search);
+            localStorage.setItem('search-query', values.search);
             localStorage.setItem('is-checkbox-checked', JSON.stringify(isCheckboxChecked));
+            console.log(filteredMovies)
+            localStorage.setItem('search-result', JSON.stringify(searchResults));
         }
     }
     }

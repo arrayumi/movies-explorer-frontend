@@ -4,6 +4,7 @@ import More from './More';
 import Preloader from '../Preloader';
 import { useState, useEffect } from 'react';
 import { MOVIESLIST_PARAMS } from '../../../../utils/moviesListParams';
+import { filterMovies } from '../../../../utils/filterMovies';
 
 export default function MoviesCardList({ movies, isLoadingMovies, 
   handleSaveMovie, handleDeleteMovie, savedMovieCheck, isSavedMovieCard, moviesNotFound }) {
@@ -53,17 +54,19 @@ export default function MoviesCardList({ movies, isLoadingMovies,
   }
     , [moviesCardList]);
 
+  
+
 
   function showMoreMovies() {
     if (width > MOVIESLIST_PARAMS.desktop.width) {
-      setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.desktop.movies.more);
+      setMoviesListLength((moviesListLength) => moviesListLength + MOVIESLIST_PARAMS.desktop.movies.more);
     } else if (
       width <= MOVIESLIST_PARAMS.desktop.width &&
       width >= MOVIESLIST_PARAMS.mobile.width
     ) {
-      setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.tablet.movies.more);
+      setMoviesListLength((moviesListLength) => moviesListLength + MOVIESLIST_PARAMS.tablet.movies.more);
     } else {
-      setMoviesListLength(moviesListLength + MOVIESLIST_PARAMS.mobile.movies.more);
+      setMoviesListLength((moviesListLength) => moviesListLength + MOVIESLIST_PARAMS.mobile.movies.more);
     }
   }
 

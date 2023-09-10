@@ -32,6 +32,7 @@ export default function MoviesPage({
         moviesToRender = filteredMovies
     }
 
+
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />

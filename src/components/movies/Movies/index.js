@@ -1,19 +1,25 @@
 import MoviesPage from "../common/MoviesPage";
 import moviesApi from "../../../utils/MoviesApi";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck }) {
 
     const [isLoadingMovies, setIsLoadingMovies] = useState(false);
     const [moviesNotFound, setMoviesNotFound] = useState(true);
 
+useEffect(() => {
+    const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
+    moviesInStorage !== null && setMovies(moviesInStorage);
+}, [])    
+
+
     function handleSearch(e) {
         e.preventDefault();
         setIsLoadingMovies(true);
-        const movies = JSON.parse(localStorage.getItem('movies'));
+        const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
         localStorage.setItem('search-result', e.target.elements.search.value);
-        movies === null ?
+        moviesInStorage === null ?
             moviesApi.getMovies()
                 .then(movies => {
                     setMoviesNotFound(false);
@@ -28,9 +34,10 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
                     setIsLoadingMovies(false);
                 })
             :
-            setMovies(movies);
+            setMovies(moviesInStorage);
         setIsLoadingMovies(false);
     }
+
 
     return (
         <MoviesPage
