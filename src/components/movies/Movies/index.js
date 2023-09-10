@@ -1,7 +1,7 @@
 import MoviesPage from "../common/MoviesPage";
 import moviesApi from "../../../utils/MoviesApi";
 
-import { useState} from "react";
+import { useState } from "react";
 
 export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie, handleDeleteMovie, savedMovieCheck }) {
 
@@ -19,7 +19,7 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
                     setMoviesNotFound(false);
                     setMovies(movies);
                     localStorage.setItem('movies', JSON.stringify(movies));
-    
+
                 })
                 .catch(err => {
                     console.log(err);
@@ -29,7 +29,7 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
                 })
             :
             setMovies(movies);
-            setIsLoadingMovies(false);
+        setIsLoadingMovies(false);
     }
 
     return (

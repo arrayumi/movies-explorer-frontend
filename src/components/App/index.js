@@ -93,6 +93,7 @@ function App() {
     }
 
     function handleLogin({ email, password }) {
+        setIsPageLoading(true);
         auth.authorize({ email, password })
             .then((data) => {
                 if (data.token) {
@@ -106,7 +107,8 @@ function App() {
             .catch((err) => {
                 console.log(err.message);
                 setIsSuccess({ success: false, msg: err.message });
-            });
+            })
+            .finally(() => setIsPageLoading(false))
     }
 
     function handleEditProfile(userInfo) {
@@ -192,7 +194,8 @@ function App() {
                             setIsSuccess={setIsSuccess} />} />
 
                     <Route path="/movies" element=
-                        {<ProtectedRoute isPageLoading={isPageLoading} element={Movies}
+                        {<ProtectedRoute isPageLoading={isPageLoading}
+                            element={Movies}
                             isLoggedIn={isLoggedIn}
                             handleSaveMovie={handleSaveMovie}
                             handleDeleteMovie={handleDeleteMovie}
