@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { filterMovies } from '../../../../utils/filterMovies';
 
 export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies,
-    isSavedMoviePath, setMoviesNotFound, sendingData, isCheckboxChecked, setIsCheckboxChecked}) {
+    isSavedMoviePath, setMoviesNotFound, sendingData, isCheckboxChecked, setIsCheckboxChecked, moviesToRender }) {
 
     const { values, handleChange, isValid, setIsValid } = useFormWithValidation();
 
@@ -51,7 +51,8 @@ export default function SearchForm({ handleSearch, movies, filteredMovies, setFi
     }
 
     function handleCheckbox() {
-        setIsCheckboxChecked(!isCheckboxChecked);
+        setIsCheckboxChecked(isCheckboxChecked => !isCheckboxChecked);
+        localStorage.setItem('is-checkbox-checked', JSON.stringify(!isCheckboxChecked));
     }
 
     return (
@@ -59,9 +60,9 @@ export default function SearchForm({ handleSearch, movies, filteredMovies, setFi
             <form className="search-form" noValidate onSubmit={handleSubmit}>
                 <div className="search-form__input-container">
                     <label className="search-form__field">
-                        <input name="search" className="search-form__input" placeholder="Фильм" required 
-                        value={values.search ?? ''} onChange={handleChange}
-                        disabled={sendingData}></input>
+                        <input name="search" className="search-form__input" placeholder="Фильм" required
+                            value={values.search ?? ''} onChange={handleChange}
+                            disabled={sendingData}></input>
                         {!isValid && <span className="search-form__error">Нужно ввести ключевое слово</span>}
                     </label>
                     <button type="submit" className="search-form__button" disabled={sendingData}></button>

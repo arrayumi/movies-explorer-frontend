@@ -63,7 +63,8 @@ export default function MoviesPage({
                     setMoviesNotFound={setMoviesNotFound}
                     sendingData={sendingData}
                     isCheckboxChecked={isCheckboxChecked}
-                    setIsCheckboxChecked={setIsCheckboxChecked} />
+                    setIsCheckboxChecked={setIsCheckboxChecked} 
+                    moviesToRender={moviesToRender}/>
                 <MoviesCardList movies={moviesList}
                     isLoadingMovies={isLoadingMovies}
                     handleSaveMovie={handleSaveMovie}
