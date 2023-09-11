@@ -20,7 +20,7 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
         setIsLoadingMovies(true);
         const moviesInStorage = JSON.parse(localStorage.getItem('movies'));
         localStorage.setItem('search-result', e.target.elements.search.value);
-        if(moviesInStorage === null) {
+        if (moviesInStorage === null) {
             setSendingData(true);
             moviesApi.getMovies()
                 .then(movies => {
@@ -37,9 +37,10 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
                     setSendingData(false);
                 })
         } else {
-            setMovies(moviesInStorage);}
-        setMoviesNotFound(false);
-        setIsLoadingMovies(false);
+            setMovies(moviesInStorage);
+            setMoviesNotFound(false);
+            setIsLoadingMovies(false);
+        }
     }
 
 
@@ -54,6 +55,6 @@ export default function Movies({ movies, setMovies, isLoggedIn, handleSaveMovie,
             handleDeleteMovie={handleDeleteMovie}
             savedMovieCheck={savedMovieCheck}
             setMoviesNotFound={setMoviesNotFound}
-            sendingData={sendingData}/>
+            sendingData={sendingData} />
     )
 }

@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react';
 import { filterMovies } from '../../../../utils/filterMovies';
 
 export default function SearchForm({ handleSearch, movies, filteredMovies, setFilteredMovies,
-    isSavedMoviePath, setMoviesNotFound, sendingData}) {
+    isSavedMoviePath, setMoviesNotFound, sendingData, isCheckboxChecked, setIsCheckboxChecked}) {
 
     const { values, handleChange, isValid, setIsValid } = useFormWithValidation();
-    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
     const [isSavedMoviesListFiltered, setIsSavedMoviesListFiltered] = useState(false);
 

@@ -6,6 +6,8 @@ import MoviesCardList from '../MoviesCardList';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { filterShortMovies } from '../../../../utils/filterMovies';
+
 export default function MoviesPage({
     movies,
     isLoggedIn,
@@ -16,12 +18,15 @@ export default function MoviesPage({
     handleDeleteMovie,
     savedMovieCheck,
     setMoviesNotFound,
-    sendingData}) {
+    sendingData }) {
 
     const location = useLocation();
     const isSavedMoviePath = location.pathname === "/saved-movies";
 
     const [filteredMovies, setFilteredMovies] = useState([]);
+
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+    const [moviesList, setMoviesList] = useState([]);
 
     let moviesToRender;
     if (isSavedMoviePath) {
@@ -31,8 +36,19 @@ export default function MoviesPage({
             moviesToRender = filteredMovies;
         }
     } else {
-        moviesToRender = filteredMovies
+        moviesToRender = filteredMovies;
     }
+
+    useEffect(() => setMoviesList(moviesToRender), [moviesToRender])
+
+
+    useEffect(() => {
+        if (isCheckboxChecked) {
+            setMoviesList(filterShortMovies(moviesToRender));
+        } else {
+            setMoviesList(moviesToRender);
+        }
+    }, [isCheckboxChecked, moviesToRender])
 
 
     return (
@@ -45,8 +61,10 @@ export default function MoviesPage({
                     filteredMovies={filteredMovies}
                     setFilteredMovies={setFilteredMovies}
                     setMoviesNotFound={setMoviesNotFound}
-                    sendingData={sendingData} />
-                <MoviesCardList movies={moviesToRender}
+                    sendingData={sendingData}
+                    isCheckboxChecked={isCheckboxChecked}
+                    setIsCheckboxChecked={setIsCheckboxChecked} />
+                <MoviesCardList movies={moviesList}
                     isLoadingMovies={isLoadingMovies}
                     handleSaveMovie={handleSaveMovie}
                     handleDeleteMovie={handleDeleteMovie}
