@@ -55,17 +55,18 @@ function App() {
                     console.log(err);
                 })
                 .finally(() => setIsPageLoading(false))
+
+            mainApi.getSavedMovies()
+                .then(movies => {
+                    setSavedMovies(movies);
+                })
+                .catch(err => console.log(err))
         }
     }
 
     useEffect(() => {
         checkToken();
-        mainApi.getSavedMovies()
-            .then(movies => {
-                setSavedMovies(movies);
-            })
-            .catch(err => console.log(err))
-    }, [])
+    }, [isLoggedIn])
 
 
 
@@ -141,6 +142,7 @@ function App() {
                 localStorage.clear();
                 setIsLoggedIn(false);
                 setCurrentUser({});
+                setSavedMovies([]);
             })
             .catch(err => console.log(err));
     }
@@ -213,9 +215,9 @@ function App() {
                             handleDeleteMovie={handleDeleteMovie}
                             movies={movies}
                             setMovies={setMovies}
-                            savedMovieCheck={savedMovieCheck} 
+                            savedMovieCheck={savedMovieCheck}
                             sendingData={sendingData}
-                            setSendingData={setSendingData}/>} />
+                            setSendingData={setSendingData} />} />
                     <Route path="/saved-movies" element=
                         {<ProtectedRoute isPageLoading={isPageLoading} element={SavedMovies}
                             isLoggedIn={isLoggedIn}
