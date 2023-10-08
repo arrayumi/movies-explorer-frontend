@@ -7,6 +7,15 @@
     margin-bottom: 10px;
 }
 
+.search-form__error {
+    color: #EE3465;
+    font-size: 11px;
+    font-weight: 400;
+    display: block;
+    padding-top: 20px;
+    text-align: center;
+}
+
 .search-form__input-container {
     position: relative;
 
@@ -15,6 +24,7 @@
 .search-form__input {
     border-radius: 40px;
     background-color: #2F2F2F;
+    color: white;
     border: none;
     font-size: 11px;
     font-style: normal;
@@ -48,6 +58,10 @@
     cursor: pointer;
 }
 
+.search-form__button:disabled {
+    background-image: url(../../../../images/search-form-button-disabled.svg);
+}
+
 @media screen and (min-width: 768px) {
     .search-form__input {
         font-size: 13px;
@@ -57,5 +71,6 @@
 @media screen and (min-width: 1280px) {
     .search-form {
         padding-top: 40px;
+        padding-bottom: 70px;
     }
 }

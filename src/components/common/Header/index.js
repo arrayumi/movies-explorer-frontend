@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../../images/logo.svg';
 import Navigation from '../Navigation';
 
-export default function Header({ isAuthorized }) {
+export default function Header({ isLoggedIn }) {
     const location = useLocation();
 
     function onClick() {
@@ -15,9 +15,9 @@ export default function Header({ isAuthorized }) {
             <NavLink to="/" className="header__logo-link">
                 <img src={logo} className="header__logo" alt="Лого." />
             </NavLink>
-            <Navigation isPopup={false} isAuthorized={isAuthorized} />
-            {isAuthorized &&
-                <button className={`header__burger-menu${isAuthorized ? ' header__burger-menu_type_auth' : ''}`} type="button" onClick={onClick}>
+            <Navigation isPopup={false} isLoggedIn={isLoggedIn} />
+            {isLoggedIn &&
+                <button className={`header__burger-menu${isLoggedIn ? ' header__burger-menu_type_auth' : ''}`} type="button" onClick={onClick}>
                 </button>
             }
         </header>

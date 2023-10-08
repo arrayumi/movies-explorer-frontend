@@ -8,10 +8,10 @@ import Techs from './Techs';
 import AboutMe from './AboutMe';
 import Footer from '../common/Footer';
 
-export default function Main() {
+export default function Main({isLoggedIn}) {
     return (
         <>
-            <Header isAuthorized={true} />
+            <Header isLoggedIn={isLoggedIn} />
             <main>
                 <Promo />
                 <NavTab />

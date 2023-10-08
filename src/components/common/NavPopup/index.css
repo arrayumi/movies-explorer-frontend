@@ -25,12 +25,13 @@
     background-color: #202020;
     justify-content: center;
     align-items: center;
-    padding: 144px 10px 0;
+    padding: 15px 10px 0;
     min-width: 100%;
     height: 100%;
 }
 
 .nav-popup__close-button {
+    cursor: pointer;
     background-color: transparent;
     border: none;
     width: 22px;

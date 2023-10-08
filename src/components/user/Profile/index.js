@@ -3,30 +3,110 @@ import Header from '../../common/Header';
 import ProfileInput from './ProfileInput';
 import ProfileSaveButton from './ProfileSaveButton';
 import ProfileLink from './ProfileLink';
+import useFormWithValidation from '../../../hooks/UseFormWithValidation';
 
-export default function Profile() {
-    const editMode = false;
+import { useContext, useEffect, useState } from 'react';
+import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
+
+export default function Profile({ isLoggedIn, isSuccess, setIsSuccess, handleEditProfile, isEditMode, 
+    setIsEditMode, handleLogout, sendingData }) {
+
+    const currentUser = useContext(CurrentUserContext);
+
+    const { values, handleChange, errors, isValid, resetForm, setValues, setIsValid } =
+        useFormWithValidation();
+
+    const { success, msg } = isSuccess;
+
+
+
+
+    // const isDisabled =!isValid ||
+    // (currentUser.name === values.name && currentUser.email === values.email);
+
+    const [isDisabled, setIsDisabled] = useState(true);
+
+    // useEffect(() => {
+    //     resetForm();
+    // }, [success]);
+
+
+    useEffect(() => {
+        setIsEditMode(false);
+        setIsValid(false);
+        setValues({
+            name: currentUser.name,
+            email: currentUser.email
+        })
+    }, [])
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const { name, email} = values;
+        handleEditProfile({ name, email });
+        setIsDisabled(true);
+    }
+
+
+    function nameInputsCheck() {
+        return currentUser.name === values.name ? false : true;
+    }
+
+    function emailInputsCheck() {
+        return currentUser.email === values.email ? false : true;
+    }
+
+    useEffect(() => {
+        (nameInputsCheck() || emailInputsCheck())  ? setIsDisabled(false) : setIsDisabled(true);
+    }, [values])
+
+
+    function clickEditButton() {
+        setIsEditMode(true);
+        setIsSuccess({
+            success: false,
+            msg: "",
+        })
+    }
+    
     return (
         <>
-            <Header isAuthorized={true} />
+            <Header isLoggedIn={isLoggedIn} />
             <main>
                 <section className="profile">
-                    <h1 className="profile__title">Привет, Анна!</h1>
+                    <h1 className="profile__title">{`Привет, ${currentUser.name}`}</h1>
 
-                    <form className="profile__form">
-                        <ProfileInput title="Имя" placeholder="Анна" />
-                        <ProfileInput title="E-mail" placeholder="pochta@yandex.ru" />
+                    <form className="profile__form" onSubmit={handleSubmit} noValidate>
+                        <ProfileInput
+                            title="Имя"
+                            name="name"
+                            placeholder={currentUser.name}
+                            isEditMode={isEditMode}
+                            handleChange={handleChange}
+                            value={values.name ?? ''}
+                            error={errors.name}
+                            setIsDisabled={setIsDisabled}
+                            sendingData={sendingData} />
+                        <ProfileInput
+                            title="E-mail"
+                            name="email"
+                            placeholder={currentUser.email}
+                            isEditMode={isEditMode}
+                            handleChange={handleChange}
+                            value={values.email ?? ''}
+                            error={errors.email}
+                            setIsDisabled={setIsDisabled}
+                            sendingData={sendingData} />
+                        {isEditMode && <ProfileSaveButton errorMessage={msg} isDisabled={isDisabled} isValid={isValid} sendingData={sendingData} />}
                     </form>
-
-                    {editMode ?
-                        <ProfileSaveButton errorMessage="При обновлении профиля произошла ошибка." />
-                        :
+                    {success && <span className="profile__success-msg">{msg}</span>}
+                    {!isEditMode &&
                         <ul className="profile__links-list">
                             <li>
-                                <ProfileLink link="/profile" text="Редактировать" />
+                                <button type="button" className="profile__button profile__button_type_edit" onClick={clickEditButton}>Редактировать</button>
                             </li>
                             <li>
-                                <ProfileLink link="/" text="Выйти из аккаунта" className="profile__link_type_logout" />
+                                <ProfileLink link="/" text="Выйти из аккаунта" className="profile__link_type_logout" onClick={handleLogout} />
                             </li>
                         </ul>
                     }

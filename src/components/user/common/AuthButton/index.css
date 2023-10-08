@@ -12,6 +12,11 @@
     margin-top: auto;
 }
 
+.auth__button:disabled {
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+}
+
 @media screen and (min-width: 768px) {
     .auth__button {
         font-size: 14px;

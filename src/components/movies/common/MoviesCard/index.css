@@ -14,11 +14,13 @@
     object-position: center;
     object-fit: cover;
     display: block;
+    min-height: 168px;
+    margin: auto;
 }
 
 .movies-card__name-container {
     display: flex;
-    padding: 5px 10px 5px 14px;
+    padding: 16px 10px 5px 14px;
     justify-content: space-between;
     align-items: center;
 }
@@ -38,5 +40,17 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 0 0 14px 14px;
+    padding: 0 0 20px 14px;
+}
+
+@media screen and (min-width: 768px) {
+    .movies-card__image{
+        min-height: 190px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .movies-card__image{
+        min-height: 203px;
+    }
 }
