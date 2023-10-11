@@ -9,7 +9,7 @@ https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1%
 http://arrayumi.nomoreparties.co/
 
 ### Используемые API:
-* собственное - для регистрации/авторизации и хранения сохраненных фильмов: https://api.movies.novvember.nomoredomains.sbs
+* собственное - для регистрации/авторизации и хранения сохраненных фильмов: https://api.arrayumi.nomoreparties.co
 * публичное - для получения коллекции фильмов BeatFilm https://api.nomoreparties.co/beatfilm-movies
 
 ### Функциональность:
