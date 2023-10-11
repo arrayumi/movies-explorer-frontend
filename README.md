@@ -25,4 +25,4 @@ http://arrayumi.nomoreparties.co/
 * Чекбокс фильтрации фильмов по их длительности
 
 ### Стек технологий:
-HTML | CSS | БЭМ | React
+`HTML` `CSS` `БЭМ` `React`
